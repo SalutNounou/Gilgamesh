@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.Console", "Gilgam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.Domain", "Gilgamesh.Domain\Gilgamesh.Domain.csproj", "{55D99EBC-B124-43C3-A999-10F59C48877F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.Entities", "Gilgamesh.Entities\Gilgamesh.Entities.csproj", "{91D05431-ACE4-4937-8BD1-3CA3211B3428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.DataAccess", "Gilgamesh.DataAccess\Gilgamesh.DataAccess.csproj", "{98EF6383-CAB5-4D70-B348-B8980720FF1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.Domain.Tests", "Gilgamesh.Domain.Tests\Gilgamesh.Domain.Tests.csproj", "{BED99933-B4AA-4D36-9F83-7270B74113FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{55D99EBC-B124-43C3-A999-10F59C48877F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55D99EBC-B124-43C3-A999-10F59C48877F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55D99EBC-B124-43C3-A999-10F59C48877F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91D05431-ACE4-4937-8BD1-3CA3211B3428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91D05431-ACE4-4937-8BD1-3CA3211B3428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91D05431-ACE4-4937-8BD1-3CA3211B3428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91D05431-ACE4-4937-8BD1-3CA3211B3428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98EF6383-CAB5-4D70-B348-B8980720FF1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98EF6383-CAB5-4D70-B348-B8980720FF1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98EF6383-CAB5-4D70-B348-B8980720FF1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98EF6383-CAB5-4D70-B348-B8980720FF1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BED99933-B4AA-4D36-9F83-7270B74113FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BED99933-B4AA-4D36-9F83-7270B74113FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BED99933-B4AA-4D36-9F83-7270B74113FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BED99933-B4AA-4D36-9F83-7270B74113FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
