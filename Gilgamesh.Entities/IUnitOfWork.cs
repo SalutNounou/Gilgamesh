@@ -5,10 +5,10 @@ namespace Gilgamesh.Entities
     public interface IUnitOfWork
     {
         #region StaticData
-        IRepository<CurrencyEntity> CurrencyRepository { get; set; }
+        IRepository<CurrencyEntity> CurrencyRepository { get; }
         #endregion StaticData
 
-        IUnitOfWork GetInstance();
+        
 
         int Complete();
         void Rollback();
