@@ -27,10 +27,10 @@ namespace Gilgamesh.Console
                 UnitOfWorkFactory.Instance.UnitOfWork = unitOfWork;
 
                 var currency = UnitOfWorkFactory.Instance.UnitOfWork.CurrencyRepository.Get(1);
-                var date = new DateTime(2016, 4, 1);
+                var date = new DateTime(2016, 5, 1);
                 bool resut = currency.IsABankHoliday(date);
-                int test = 0;
-
+                System.Console.WriteLine("test");
+                System.Console.ReadKey();
             }
         }
     }
