@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91D05431-ACE4-4937-8BD1-3CA3211B3428}</ProjectGuid>
+    <ProjectGuid>{F2E7CC04-A0FC-4ADC-9AB6-87CB8873B177}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gilgamesh.Entities</RootNamespace>
-    <AssemblyName>Gilgamesh.Entities</AssemblyName>
+    <RootNamespace>Gilgamesh.DataMigration.Tests</RootNamespace>
+    <AssemblyName>Gilgamesh.DataMigration.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NFluent, Version=1.3.1.0, Culture=neutral, PublicKeyToken=18828b37b84b1437, processorArchitecture=MSIL">
+      <HintPath>..\packages\NFluent.1.3.1.0\lib\net40\NFluent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.2.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.2.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,17 +52,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRepository.cs" />
-    <Compile Include="Properties\IUnitOfWork.cs" />
-    <Compile Include="IUnitofWorkFactory.cs" />
-    <Compile Include="StaticData\BankHoliday.cs" />
-    <Compile Include="StaticData\Calendar.cs" />
-    <Compile Include="StaticData\CommonNonWorkingDay.cs" />
-    <Compile Include="StaticData\Currency.cs" />
+    <Compile Include="CurrencyMigrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaticData\ICalendar.cs" />
-    <Compile Include="StaticData\ICurrency.cs" />
-    <Compile Include="UnitOfWorkFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gilgamesh.DataAccess\Gilgamesh.DataAccess.csproj">
+      <Project>{98ef6383-cab5-4d70-b348-b8980720ff1b}</Project>
+      <Name>Gilgamesh.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilgamesh.DataMigration\Gilgamesh.DataMigration.csproj">
+      <Project>{8e3d4437-076c-48c7-8c24-401a6e8abcd4}</Project>
+      <Name>Gilgamesh.DataMigration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilgamesh.Entities\Gilgamesh.Entities.csproj">
+      <Project>{91d05431-ace4-4937-8bd1-3ca3211b3428}</Project>
+      <Name>Gilgamesh.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

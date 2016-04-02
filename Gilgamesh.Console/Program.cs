@@ -21,20 +21,15 @@ namespace Gilgamesh.Console
 
         private  static void  AddCurrency()
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
+           // Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
             using (var unitOfWork = new UnitOfWork(new ApplicationContext()))
             {
                 UnitOfWorkFactory.Instance.UnitOfWork = unitOfWork;
-                var currency = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } })
-                {
-                    CurrencyId = 2,
-                    Name = "USD"
-                };
 
-                UnitOfWorkFactory.Instance.UnitOfWork.CurrencyRepository.Add(currency);
-                UnitOfWorkFactory.Instance.UnitOfWork.Complete();
-
-
+                var currency = UnitOfWorkFactory.Instance.UnitOfWork.CurrencyRepository.Get(1);
+                var date = new DateTime(2016, 4, 1);
+                bool resut = currency.IsABankHoliday(date);
+                int test = 0;
 
             }
         }

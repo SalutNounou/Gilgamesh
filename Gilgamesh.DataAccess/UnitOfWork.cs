@@ -13,11 +13,13 @@ namespace Gilgamesh.DataAccess
         {
             _context = context;
             CurrencyRepository = new Repository<Currency>(_context);
+            CommonNonWorkingDayRepository = new Repository<CommonNonWorkingDay>(_context);
         }
 
-        public IRepository<Currency> CurrencyRepository { get;}
+        public IRepository<Currency> CurrencyRepository { get;  }
+        public IRepository<CommonNonWorkingDay> CommonNonWorkingDayRepository { get; }
 
-        
+
 
         public int Complete()
         {

@@ -10,7 +10,7 @@ namespace Gilgamesh.DataAccess
     {
 
         public DbSet<Currency> Currencies { get; set; }
-        
+        public DbSet<CommonNonWorkingDay> NonWorkingDays { get; set; }
 
 
         public IQueryable<T> Find<T>() where T : class
@@ -23,7 +23,7 @@ namespace Gilgamesh.DataAccess
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new CurrencyConfiguration());
             modelBuilder.Configurations.Add(new BankHolidayConfiguration());
-
+            modelBuilder.Configurations.Add(new NonWorkingDayConfiguration());
 
         }
 
@@ -55,5 +55,15 @@ namespace Gilgamesh.DataAccess
             HasRequired(c => c.Currency);
         }
     }
+
+    public class NonWorkingDayConfiguration : EntityTypeConfiguration<CommonNonWorkingDay>
+    {
+        public NonWorkingDayConfiguration()
+        {
+            HasKey(c => c.CommmonNonWorkingDayId);
+            Property(c => c.RowVersion).IsRowVersion();
+        }
+    }
+
 
 }

@@ -17,9 +17,14 @@ namespace Gilgamesh.Entities.Tests
         public void ShouldTellIfADayIsABanKHoliday()
         {
             //Arrange
-            ICurrency currency = new Currency(new List<BankHoliday>{new BankHoliday {Day = new DateTime(2016,5,1)} }) { Name = "EUR" };
+            ICurrency currency = new Currency(new List<BankHoliday>{new BankHoliday {Day = new DateTime(2016,5,1)} },new List<CommonNonWorkingDay> {new CommonNonWorkingDay {Day = new DateTime(2016,1,1)} }) { Name = "EUR" };
             //Act
             var actual = currency.IsABankHoliday(new DateTime(2016, 5, 1));
+            //Assert
+            Assert.AreEqual(true, actual);
+            //Act
+            //Act
+            actual = currency.IsABankHoliday(new DateTime(2016, 1, 1));
             //Assert
             Assert.AreEqual(true, actual);
 
@@ -30,7 +35,7 @@ namespace Gilgamesh.Entities.Tests
         public void ShouldTellIfADayIsNotABanKHoliday()
         {
             //Arrange
-            ICurrency currency = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } }) { Name = "EUR" };
+            ICurrency currency = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } }, new List<CommonNonWorkingDay>()) { Name = "EUR" };
             //Act
             var actual = currency.IsABankHoliday(new DateTime(2016, 5, 2));
             //Assert
@@ -38,10 +43,10 @@ namespace Gilgamesh.Entities.Tests
         }
 
         [Test]
-        public void ShouldAddCorrectlyWoringDays()
+        public void ShouldAddCorrectlyWorkingDays()
         {
             //Arrange
-            ICurrency currency = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } }) { Name = "EUR" };
+            ICurrency currency = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } }, new List<CommonNonWorkingDay>()) { Name = "EUR" };
             //Act
             var actual = currency.AddDays(new DateTime(2016, 4, 30), 1);
             //Assert

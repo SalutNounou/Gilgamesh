@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.DataAccess", "Gil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.Entitities.Tests", "Gilgamesh.Domain.Tests\Gilgamesh.Entitities.Tests.csproj", "{BED99933-B4AA-4D36-9F83-7270B74113FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.DataMigration", "Gilgamesh.DataMigration\Gilgamesh.DataMigration.csproj", "{8E3D4437-076C-48C7-8C24-401A6E8ABCD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.DataMigration.Tests", "Gilgamesh.DataMigration.Tests\Gilgamesh.DataMigration.Tests.csproj", "{F2E7CC04-A0FC-4ADC-9AB6-87CB8873B177}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{BED99933-B4AA-4D36-9F83-7270B74113FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BED99933-B4AA-4D36-9F83-7270B74113FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BED99933-B4AA-4D36-9F83-7270B74113FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E3D4437-076C-48C7-8C24-401A6E8ABCD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3D4437-076C-48C7-8C24-401A6E8ABCD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3D4437-076C-48C7-8C24-401A6E8ABCD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3D4437-076C-48C7-8C24-401A6E8ABCD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2E7CC04-A0FC-4ADC-9AB6-87CB8873B177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E7CC04-A0FC-4ADC-9AB6-87CB8873B177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E7CC04-A0FC-4ADC-9AB6-87CB8873B177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E7CC04-A0FC-4ADC-9AB6-87CB8873B177}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
