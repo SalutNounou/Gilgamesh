@@ -2,7 +2,8 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
-using Gilgamesh.Entities.StaticData;
+using Gilgamesh.Entities.StaticData.Currency;
+using Gilgamesh.Entities.StaticData.Reference;
 
 namespace Gilgamesh.DataAccess
 {
@@ -11,6 +12,8 @@ namespace Gilgamesh.DataAccess
 
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<CommonNonWorkingDay> NonWorkingDays { get; set; }
+        public DbSet<Reference> References { get; set; }
+        public DbSet<ReferenceType> ReferenceTypes { get; set; }
 
 
         public IQueryable<T> Find<T>() where T : class
@@ -24,7 +27,8 @@ namespace Gilgamesh.DataAccess
             modelBuilder.Configurations.Add(new CurrencyConfiguration());
             modelBuilder.Configurations.Add(new BankHolidayConfiguration());
             modelBuilder.Configurations.Add(new NonWorkingDayConfiguration());
-
+            modelBuilder.Configurations.Add(new ReferenceConfiguration());
+            modelBuilder.Configurations.Add(new ReferenceTypeConfiguration());
         }
 
         public void Rollback()
@@ -62,6 +66,29 @@ namespace Gilgamesh.DataAccess
         {
             HasKey(c => c.CommmonNonWorkingDayId);
             Property(c => c.RowVersion).IsRowVersion();
+        }
+    }
+
+    public class ReferenceConfiguration : EntityTypeConfiguration<Reference>
+    {
+        public ReferenceConfiguration()
+        {
+            HasKey(c => c.ReferenceId);
+            Property(c => c.Name).HasMaxLength(24);
+            Property(c => c.RowVersion).IsRowVersion();
+            Property(c => c.ReferecenceTypeId).IsRequired();
+            Property(c => c.InstrumentId).IsRequired();
+        }
+    }
+
+    public class ReferenceTypeConfiguration : EntityTypeConfiguration<ReferenceType>
+    {
+        public ReferenceTypeConfiguration()
+        {
+            HasKey(c => c.ReferenceTypeId);
+            Property(c => c.RowVersion).IsRowVersion();
+            Property(c => c.Name).HasMaxLength(16);
+            Property(c => c.ReferenceTypeId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }
     }
 

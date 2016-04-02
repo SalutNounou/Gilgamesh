@@ -1,4 +1,5 @@
-﻿using Gilgamesh.Entities.StaticData;
+﻿using Gilgamesh.Entities.StaticData.Reference;
+using Gilgamesh.Entities.StaticData.Currency;
 
 namespace Gilgamesh.Entities
 {
@@ -7,7 +8,8 @@ namespace Gilgamesh.Entities
         #region StaticData
         IRepository<Currency> CurrencyRepository { get;  }
         IRepository<CommonNonWorkingDay> CommonNonWorkingDayRepository { get; }
-
+        IRepository<Reference> References { get; }
+         IRepository<ReferenceType> ReferenceTypes { get; }
         #endregion StaticData
 
         int Complete();

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gilgamesh.Entities.StaticData
+namespace Gilgamesh.Entities.StaticData.Currency
 {
     public interface ICalendar
     {

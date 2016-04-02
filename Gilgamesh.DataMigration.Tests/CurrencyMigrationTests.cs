@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Gilgamesh.DataAccess;
-using Gilgamesh.Entities.StaticData;
+using Gilgamesh.Entities.StaticData.Currency;
 using NUnit.Framework;
 using NFluent;
 

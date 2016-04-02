@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Gilgamesh.Entities;
-using Gilgamesh.Entities.StaticData;
+using Gilgamesh.Entities.StaticData.Currency;
 
 namespace Gilgamesh.DataMigration
 {

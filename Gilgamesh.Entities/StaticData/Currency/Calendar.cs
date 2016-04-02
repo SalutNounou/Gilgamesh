@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
-namespace Gilgamesh.Entities.StaticData
+namespace Gilgamesh.Entities.StaticData.Currency
 {
     public abstract class Calendar : ICalendar
     {

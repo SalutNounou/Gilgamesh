@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-
-namespace Gilgamesh.Entities.StaticData
+namespace Gilgamesh.Entities.StaticData.Currency
 {
     public class Currency :Calendar, ICurrency
     {

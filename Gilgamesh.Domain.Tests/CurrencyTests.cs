@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Gilgamesh.Entities.StaticData;
+using Gilgamesh.Entities.StaticData.Currency;
 using NUnit.Framework;
 
 
