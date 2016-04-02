@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Gilgamesh.Entities;
+using Gilgamesh.Entities.StaticData.Currency;
 using Gilgamesh.Entities.StaticData.Market;
 
 namespace Gilgamesh.DataMigration
@@ -12,7 +13,7 @@ namespace Gilgamesh.DataMigration
 
             foreach (KeyValuePair<int, Tuple<string, string, int>> kvp in Markets)
             {
-                UnitOfWorkFactory.Instance.UnitOfWork.Markets.Add(new Market { Id = kvp.Key, MarketName = kvp.Value.Item1, MarketAcronym = kvp.Value.Item2, MarketCurrencyId = kvp.Value.Item3 });
+                UnitOfWorkFactory.Instance.UnitOfWork.Markets.Add(new Market{ Id = kvp.Key, MarketName = kvp.Value.Item1, MarketAcronym = kvp.Value.Item2, MarketCurrencyId = kvp.Value.Item3 });
             }
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
         }

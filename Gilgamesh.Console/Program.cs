@@ -15,23 +15,17 @@ namespace Gilgamesh.Console
     {
         static void Main(string[] args)
         {
-            AddCurrency();
-        }
-
-
-        private  static void  AddCurrency()
-        {
-           // Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
             using (var unitOfWork = new UnitOfWork(new ApplicationContext()))
             {
                 UnitOfWorkFactory.Instance.UnitOfWork = unitOfWork;
-
-                var currency = UnitOfWorkFactory.Instance.UnitOfWork.CurrencyRepository.Get(1);
-                var date = new DateTime(2016, 5, 1);
-                bool resut = currency.IsABankHoliday(date);
-                System.Console.WriteLine("test");
-                System.Console.ReadKey();
+                var market = UnitOfWorkFactory.Instance.UnitOfWork.Markets.Get(100);
+                var date = new DateTime(2016, 3, 22);
+                bool resut = market.IsABankHoliday(date);
+                int test = 0;
             }
+
+
+
         }
     }
 }
