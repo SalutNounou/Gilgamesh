@@ -42,8 +42,8 @@ namespace Gilgamesh.DataMigration
         {
             return Currencies.ContainsKey(i)?new Currency
             {
-                CurrencyId = i,
-                Name = Currencies[i]
+                Id = i,
+                CurrencyName = Currencies[i]
             }:null;
         }
 

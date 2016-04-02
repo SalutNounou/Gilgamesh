@@ -2,6 +2,6 @@
 {
     public interface ICurrency : ICalendar
     {
-        string Name { get; set; }
+        string CurrencyName { get; set; }
     }
 }

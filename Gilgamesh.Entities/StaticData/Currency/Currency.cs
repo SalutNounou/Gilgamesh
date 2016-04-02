@@ -4,37 +4,28 @@ using System.Linq;
 
 namespace Gilgamesh.Entities.StaticData.Currency
 {
-    public class Currency :Calendar, ICurrency
+    public class Currency : Calendar, ICurrency
     {
-        public int CurrencyId { get; set; }
-        public string Name { get; set; }
-        private List<BankHoliday> _bankHolidays;
-        public virtual List<BankHoliday> BankHolidays
-        { get { return _bankHolidays; } private set { _bankHolidays = value; } }
-        public byte[] RowVersion { get; set; }
+        
+        public string CurrencyName { get; set; }
+        
 
 
 
-        public Currency():this(new List<BankHoliday>())
+        public Currency() : base()
         {
-            
+
         }
 
-        public Currency(List<BankHoliday> bankHolidays)
+        public Currency(List<BankHoliday> bankHolidays) : base(bankHolidays)
         {
-            _bankHolidays = bankHolidays;
+
         }
 
-
-        public Currency(List<BankHoliday> bankholidays, List<CommonNonWorkingDay> commomnNonWorkingDays): base(commomnNonWorkingDays)
+        public Currency(List<BankHoliday> bankholidays, List<CommonNonWorkingDay> commomnNonWorkingDays) : base(commomnNonWorkingDays, bankholidays)
         {
-            _bankHolidays = bankholidays;
-            
+
         }
 
-        public override bool IsABankHoliday(DateTime day)
-        {
-            return IsCommonNonWorkingDay(day) || BankHolidays.Any(d => d.Day.ToShortDateString() == day.ToShortDateString());
-        }
     }
 }

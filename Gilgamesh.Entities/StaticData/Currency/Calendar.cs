@@ -6,26 +6,41 @@ namespace Gilgamesh.Entities.StaticData.Currency
 {
     public abstract class Calendar : ICalendar
     {
-        public  bool IsCommonNonWorkingDay(DateTime day)
+
+        public int Id { get; set; }
+        public byte[] RowVersion { get; set; }
+        protected static List<CommonNonWorkingDay> NonWorkingDays { get; private set; }
+
+
+        private List<BankHoliday> _bankHolidays;
+        public virtual List<BankHoliday> BankHolidays
+        { get { return _bankHolidays; } private set { _bankHolidays = value; } }
+
+
+        protected Calendar() : this(UnitOfWorkFactory.Instance.GetUnitOfWork().CommonNonWorkingDayRepository.GetAll().ToList())
         {
-            return day.DayOfWeek==DayOfWeek.Saturday || day.DayOfWeek ==DayOfWeek.Sunday|| NonWorkingDays.Any(d=>d.Day==day);
+
         }
 
-        protected static  List<CommonNonWorkingDay> NonWorkingDays { get; private set; }
-
-        protected Calendar():this(UnitOfWorkFactory.Instance.GetUnitOfWork().CommonNonWorkingDayRepository.GetAll().ToList())
+        protected Calendar(List<CommonNonWorkingDay> nonWorkingDays) : this(nonWorkingDays, new List<BankHoliday>())
         {
-            
+
         }
 
-        protected Calendar(List<CommonNonWorkingDay> nonWorkingDays)
+        protected Calendar(List<BankHoliday> bankHolidays) : this(UnitOfWorkFactory.Instance.GetUnitOfWork().CommonNonWorkingDayRepository.GetAll().ToList(), bankHolidays)
+        {
+
+        }
+
+        protected Calendar(List<CommonNonWorkingDay> nonWorkingDays, List<BankHoliday> bankHolidays)
         {
             NonWorkingDays = nonWorkingDays;
+            BankHolidays = bankHolidays;
         }
 
-        public virtual bool IsABankHoliday(DateTime day)
+        public bool IsABankHoliday(DateTime day)
         {
-            return IsCommonNonWorkingDay(day);
+            return IsCommonNonWorkingDay(day) || BankHolidays.Any(d => d.Day.ToShortDateString() == day.ToShortDateString());
         }
 
         public DateTime AddDays(DateTime startingDate, int howManyDays)
@@ -42,6 +57,11 @@ namespace Gilgamesh.Entities.StaticData.Currency
                 count += 1 * Math.Sign(howManyDays);
             }
             return currentDate;
+        }
+
+        public bool IsCommonNonWorkingDay(DateTime day)
+        {
+            return day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday || NonWorkingDays.Any(d => d.Day == day);
         }
     }
 }

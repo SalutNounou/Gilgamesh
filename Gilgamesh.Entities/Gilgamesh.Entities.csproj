@@ -68,6 +68,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticData\Currency\ICalendar.cs" />
     <Compile Include="StaticData\Currency\ICurrency.cs" />
+    <Compile Include="StaticData\Market\IMarket.cs" />
+    <Compile Include="StaticData\Market\Market.cs" />
     <Compile Include="StaticData\Reference\IReference.cs" />
     <Compile Include="StaticData\Reference\Reference.cs" />
     <Compile Include="StaticData\Reference\ReferenceType.cs" />

@@ -2,10 +2,11 @@
 using Gilgamesh.Entities;
 using Gilgamesh.Entities.StaticData.Reference;
 using Gilgamesh.Entities.StaticData.Currency;
+using Gilgamesh.Entities.StaticData.Market;
 
 namespace Gilgamesh.DataAccess
 {
-    public class UnitOfWork : IUnitOfWork,IDisposable
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
 
         private readonly IDbContext _context;
@@ -17,13 +18,14 @@ namespace Gilgamesh.DataAccess
             CommonNonWorkingDayRepository = new Repository<CommonNonWorkingDay>(_context);
             References = new Repository<Reference>(_context);
             ReferenceTypes = new Repository<ReferenceType>(_context);
+            Markets = new Repository<Market>(_context);
         }
 
-        public IRepository<Currency> CurrencyRepository { get;  }
+        public IRepository<Currency> CurrencyRepository { get; }
         public IRepository<CommonNonWorkingDay> CommonNonWorkingDayRepository { get; }
         public IRepository<Reference> References { get; }
-        public IRepository<ReferenceType> ReferenceTypes { get; } 
-
+        public IRepository<ReferenceType> ReferenceTypes { get; }
+        public IRepository<Market> Markets { get; }
 
         public int Complete()
         {
