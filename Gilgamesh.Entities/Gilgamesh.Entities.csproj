@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IRepository.cs" />
-    <Compile Include="Properties\IUnitOfWork.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitofWorkFactory.cs" />
     <Compile Include="StaticData\Currency\BankHoliday.cs" />
     <Compile Include="StaticData\Currency\Calendar.cs" />
