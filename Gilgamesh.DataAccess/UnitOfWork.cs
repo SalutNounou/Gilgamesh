@@ -1,20 +1,21 @@
-﻿using Gilgamesh.Entities;
+﻿using System;
+using Gilgamesh.Entities;
 using Gilgamesh.Entities.StaticData;
 
 namespace Gilgamesh.DataAccess
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork,IDisposable
     {
 
-        private readonly ApplicationContext _context;
+        private readonly IDbContext _context;
 
-        public UnitOfWork(ApplicationContext context)
+        public UnitOfWork(IDbContext context)
         {
             _context = context;
-            CurrencyRepository = new Repository<CurrencyEntity>(_context);
+            CurrencyRepository = new Repository<Currency>(_context);
         }
 
-        public IRepository<CurrencyEntity> CurrencyRepository { get;}
+        public IRepository<Currency> CurrencyRepository { get;}
 
         
 

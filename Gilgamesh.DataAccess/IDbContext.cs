@@ -1,10 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity;
 
 namespace Gilgamesh.DataAccess
 {
-    public interface IDbContext
+    public interface IDbContext : IDisposable
     {
         IQueryable<T> Find<T>() where T : class;
         DbChangeTracker ChangeTracker { get; }

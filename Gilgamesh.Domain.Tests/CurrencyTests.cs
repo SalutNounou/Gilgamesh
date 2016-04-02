@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Gilgamesh.Domain.StaticData;
+
 using Gilgamesh.Entities.StaticData;
 using NUnit.Framework;
 
 
-namespace Gilgamesh.Domain.Tests
+
+namespace Gilgamesh.Entities.Tests
 {
     public class CurrencyTests
     {
@@ -16,12 +17,12 @@ namespace Gilgamesh.Domain.Tests
         public void ShouldTellIfADayIsABanKHoliday()
         {
             //Arrange
-            ICurrency currency = new Currency(new List<BankHoliday>{new BankHoliday {Day = new DateTime(2016,5,1)} }) {Name = "EUR"};
+            ICurrency currency = new Currency(new List<BankHoliday>{new BankHoliday {Day = new DateTime(2016,5,1)} }) { Name = "EUR" };
             //Act
             var actual = currency.IsABankHoliday(new DateTime(2016, 5, 1));
             //Assert
-            Assert.AreEqual(true,actual );
-           
+            Assert.AreEqual(true, actual);
+
         }
 
 
@@ -29,7 +30,7 @@ namespace Gilgamesh.Domain.Tests
         public void ShouldTellIfADayIsNotABanKHoliday()
         {
             //Arrange
-            ICurrency currency = new Currency(new List<BankHoliday>{ new BankHoliday { Day = new DateTime(2016, 5, 1) } }) { Name = "EUR" };
+            ICurrency currency = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } }) { Name = "EUR" };
             //Act
             var actual = currency.IsABankHoliday(new DateTime(2016, 5, 2));
             //Assert
@@ -44,7 +45,7 @@ namespace Gilgamesh.Domain.Tests
             //Act
             var actual = currency.AddDays(new DateTime(2016, 4, 30), 1);
             //Assert
-            Assert.AreEqual(new DateTime(2016,5,2), actual);
+            Assert.AreEqual(new DateTime(2016, 5, 2), actual);
             //Act
             actual = currency.AddDays(new DateTime(2016, 4, 30), -2);
             //Assert

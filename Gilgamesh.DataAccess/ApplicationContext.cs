@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using Gilgamesh.Entities.StaticData;
@@ -8,13 +9,13 @@ namespace Gilgamesh.DataAccess
     public class ApplicationContext : DbContext, IDbContext
     {
 
-        public DbSet<CurrencyEntity> Currencies { get; set; }
+        public DbSet<Currency> Currencies { get; set; }
         
 
 
         public IQueryable<T> Find<T>() where T : class
         {
-            return this.Set<T>();
+            return Set<T>();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -33,14 +34,15 @@ namespace Gilgamesh.DataAccess
     }
 
 
-    public class CurrencyConfiguration : EntityTypeConfiguration<CurrencyEntity>
+    public class CurrencyConfiguration : EntityTypeConfiguration<Currency>
     {
         public CurrencyConfiguration()
         {
-            HasKey(a => a.CurrencyEntityId);
+            HasKey(a => a.CurrencyId);
+            Property(c => c.CurrencyId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
             Property(a => a.Name).HasMaxLength(3);
             Property(a => a.RowVersion).IsRowVersion();
-            HasMany(a => a.BankHolidays).WithRequired(c => c.Currency);
+            
         }
     }
 
@@ -48,9 +50,9 @@ namespace Gilgamesh.DataAccess
     {
         public BankHolidayConfiguration()
         {
-            HasKey(c => c.BankHolidayEntityId);
+            HasKey(c => c.BankHolidayId);
             Property(c => c.RowVersion).IsRowVersion();
-            HasRequired(c => c.Currency).WithMany(a => a.BankHolidays);
+            HasRequired(c => c.Currency);
         }
     }
 

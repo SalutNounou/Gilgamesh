@@ -41,11 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IRepository.cs" />
-    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Properties\IUnitOfWork.cs" />
     <Compile Include="IUnitofWorkFactory.cs" />
     <Compile Include="StaticData\BankHoliday.cs" />
-    <Compile Include="StaticData\CurrencyEntity.cs" />
+    <Compile Include="StaticData\Currency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticData\ICurrency.cs" />
     <Compile Include="UnitOfWorkFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

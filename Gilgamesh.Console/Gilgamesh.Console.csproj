@@ -59,6 +59,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gilgamesh.DataAccess\Gilgamesh.DataAccess.csproj">
+      <Project>{98ef6383-cab5-4d70-b348-b8980720ff1b}</Project>
+      <Name>Gilgamesh.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilgamesh.Entities\Gilgamesh.Entities.csproj">
+      <Project>{91d05431-ace4-4937-8bd1-3ca3211b3428}</Project>
+      <Name>Gilgamesh.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

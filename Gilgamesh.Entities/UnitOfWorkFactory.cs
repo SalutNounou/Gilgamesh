@@ -12,7 +12,7 @@
            
         }
 
-        private static  readonly object _instancelock = new object();
+        private static  readonly object Instancelock = new object();
 
         public static UnitOfWorkFactory Instance
         {
@@ -20,7 +20,7 @@
             {
                 if (_instance == null)
                 {
-                    lock (_instancelock)
+                    lock (Instancelock)
                     {
                         _instance = new UnitOfWorkFactory();
                     }

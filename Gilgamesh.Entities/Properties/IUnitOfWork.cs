@@ -5,7 +5,7 @@ namespace Gilgamesh.Entities
     public interface IUnitOfWork
     {
         #region StaticData
-        IRepository<CurrencyEntity> CurrencyRepository { get; }
+        IRepository<Currency> CurrencyRepository { get; }
         #endregion StaticData
 
         
