@@ -15,6 +15,7 @@ namespace Gilgamesh.DataMigration
                 UnitOfWorkFactory.Instance.UnitOfWork = unitOfWork;
                 CurrencyImporter.ImportCurrencies();
                 ReferenceImporter.ImportReferences();
+                MarketImporter.ImportMarkets();
             }
         }
     }

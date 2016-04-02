@@ -103,7 +103,7 @@ namespace Gilgamesh.DataAccess
             Property(m => m.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
             Property(m => m.RowVersion).IsRowVersion();
             Property(m => m.MarketName).HasMaxLength(64).IsRequired();
-            Property(m => m.MarketAcronym).HasMaxLength(8).IsRequired();
+            Property(m => m.MarketAcronym).HasMaxLength(8);
             Property(m => m.MarketCurrencyId).IsRequired();
 
         }
