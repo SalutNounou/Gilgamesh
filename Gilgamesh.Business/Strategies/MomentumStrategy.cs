@@ -10,8 +10,8 @@ namespace Gilgamesh.Business.Strategies
     public class MomentumStratgy : IStrategy
     {
         private const string SAndP500Ticker = @"^GSPC";
-        private const string MsciWorldMinusUsTicker = "VEU";
-        private const string BillsTicker = @"^IRX";
+        private const string MsciWorldMinusUsTicker = "ACWX";
+        private const string BillsTicker = "BIL";// @"^IRX";
 
 
         private static readonly  Dictionary<ActionsMomentumStrategy, string> Actions = new Dictionary<ActionsMomentumStrategy, string>
@@ -36,7 +36,8 @@ namespace Gilgamesh.Business.Strategies
             var actionMonthMinusOne = GetInvestmentAction(today.AddMonths(-1));
             var tendencyChange = actionToday != actionMonthMinusOne;
             StringBuilder actionText = new StringBuilder().Append(tendencyChange?"!!!Momentum change!!!  : ":"Momentum goes ahead  :  ").Append(Actions[actionToday]);
-            Utils.Mail.MailUtil.SendMail("thisisjulienh@gmail.com","Momentum Strategy : Action of the month", actionText.ToString());
+            var adressTo = System.Configuration.ConfigurationManager.AppSettings["mailAdressTo"];
+            Utils.Mail.MailUtil.SendMail(adressTo, "Momentum Strategy : Action of the month", actionText.ToString());
 
         }
 
