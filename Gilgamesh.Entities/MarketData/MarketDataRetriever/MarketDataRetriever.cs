@@ -118,15 +118,15 @@ namespace Gilgamesh.Entities.MarketData.MarketDataRetriever
             var fixings = new List<Fixings>();
            
             if (currencyTo == null || currencyFrom == null) return fixings;
-            var currentDate = dateFrom;
+            var currentDate = dateTo;
             
-            while (currentDate <= dateTo)
+            while (currentDate >= dateFrom)
             {
                 if (!currencyTo.IsABankHoliday(currentDate) && !currencyFrom.IsABankHoliday(currentDate))
                 {
                     fixings.Add(GetForexAtDate(currencyFrom.CurrencyName,currencyTo.CurrencyName,currentDate));
                 }
-                currentDate=currentDate.AddDays(1);
+                currentDate=currentDate.AddDays(-1);
             }
             return fixings;
         }

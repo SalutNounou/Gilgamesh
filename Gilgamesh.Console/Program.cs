@@ -8,6 +8,7 @@ using Gilgamesh.DataAccess;
 using Gilgamesh.Entities;
 using Gilgamesh.Entities.StaticData;
 using System.Data.Entity;
+using Gilgamesh.Business.Strategies;
 using Gilgamesh.Entities.MarketData;
 using Gilgamesh.Entities.MarketData.MarketDataRetriever;
 
@@ -21,7 +22,10 @@ namespace Gilgamesh.Console
             using (var unitOfWork = new UnitOfWork(new ApplicationContext()))
             {
                 IMarketDataRetriever marketDataRetriever = new MarketDataRetriever();
-                var last = marketDataRetriever.GetForexAtDate("USD", "CHF",new DateTime(2016,3,22));
+                //var last = marketDataRetriever.GetForexAtDate("USD", "CHF",new DateTime(2016,3,22));
+                var momentumStrategy = new MomentumStratgy(marketDataRetriever);
+                momentumStrategy.RunStrategy();
+
             }
         }
     }

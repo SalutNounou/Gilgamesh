@@ -4,7 +4,6 @@ using System.Linq;
 using Gilgamesh.Entities.StaticData.Currency;
 using Gilgamesh.Entities.MarketData.MarketDataRetriever;
 using NUnit.Framework;
-using NSubstitute;
 
 namespace Gilgamesh.Entities.Tests
 {
@@ -53,8 +52,8 @@ namespace Gilgamesh.Entities.Tests
             Assert.IsNotNull(last);
             Assert.IsNotNull(last.FirstOrDefault());
             Assert.IsNotNull(last.LastOrDefault());
-            Assert.AreEqual(last.FirstOrDefault().Reference, "USD/CHF");
-            Assert.AreEqual(last.FirstOrDefault().Last, 1.0325);
+            Assert.AreEqual(last.LastOrDefault().Reference, "USD/CHF");
+            Assert.AreEqual(last.LastOrDefault().Last, 1.0325);
         }
 
     }
