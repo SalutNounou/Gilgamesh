@@ -10,6 +10,7 @@ namespace Gilgamesh.Entities.Tests
 {
     class MarketDataRetrieverTests
     {
+
         [Test]
         public void ShouldRetrieveCorrectFixings()
         {
@@ -23,7 +24,6 @@ namespace Gilgamesh.Entities.Tests
             Assert.AreEqual(2, fixings.Count);
             Assert.IsNotNull(fixings.FirstOrDefault());
             Assert.AreEqual(187.630005, fixings.FirstOrDefault().Last);
-            
         }
 
 
@@ -36,7 +36,7 @@ namespace Gilgamesh.Entities.Tests
             var last = marketDataRetriever.GetForexAtDate("USD", "CHF", new DateTime(2016, 3, 22));
             //Assert
             Assert.IsNotNull(last);
-            Assert.AreEqual(last.Reference,"USD/CHF");
+            Assert.AreEqual(last.Reference, "USD/CHF");
             Assert.AreEqual(last.Last, 1.0299);
         }
 
@@ -48,7 +48,7 @@ namespace Gilgamesh.Entities.Tests
             Currency currencyFrom = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } }, new List<CommonNonWorkingDay> { new CommonNonWorkingDay { Day = new DateTime(2016, 1, 1) } }) { CurrencyName = "USD" };
             Currency currencyTo = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } }, new List<CommonNonWorkingDay> { new CommonNonWorkingDay { Day = new DateTime(2016, 1, 1) } }) { CurrencyName = "CHF" };
             //Act
-            var last = marketDataRetriever.GetForexHistoricalFixings(currencyFrom, currencyTo, new DateTime(2016, 3, 21),new DateTime(2016,03,22));
+            var last = marketDataRetriever.GetForexHistoricalFixings(currencyFrom, currencyTo, new DateTime(2016, 3, 21), new DateTime(2016, 03, 22));
             //Assert
             Assert.IsNotNull(last);
             Assert.IsNotNull(last.FirstOrDefault());

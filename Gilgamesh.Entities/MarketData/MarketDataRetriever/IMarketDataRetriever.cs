@@ -13,3 +13,4 @@ namespace Gilgamesh.Entities.MarketData.MarketDataRetriever
         Fixings GetForexAtDate(string currencyFrom, string currencyTo, DateTime date);
     }
 }
+
