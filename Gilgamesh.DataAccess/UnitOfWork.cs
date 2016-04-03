@@ -1,5 +1,6 @@
 ﻿using System;
 using Gilgamesh.Entities;
+using Gilgamesh.Entities.MarketData;
 using Gilgamesh.Entities.StaticData.Reference;
 using Gilgamesh.Entities.StaticData.Currency;
 using Gilgamesh.Entities.StaticData.Market;
@@ -19,6 +20,7 @@ namespace Gilgamesh.DataAccess
             References = new Repository<Reference>(_context);
             ReferenceTypes = new Repository<ReferenceType>(_context);
             Markets = new Repository<Market>(_context);
+            Fixings = new Repository<Fixings>(_context);
         }
 
         public IRepository<Currency> CurrencyRepository { get; }
@@ -26,6 +28,7 @@ namespace Gilgamesh.DataAccess
         public IRepository<Reference> References { get; }
         public IRepository<ReferenceType> ReferenceTypes { get; }
         public IRepository<Market> Markets { get; }
+        public IRepository<Fixings> Fixings { get; }
 
         public int Complete()
         {

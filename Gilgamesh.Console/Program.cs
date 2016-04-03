@@ -8,6 +8,8 @@ using Gilgamesh.DataAccess;
 using Gilgamesh.Entities;
 using Gilgamesh.Entities.StaticData;
 using System.Data.Entity;
+using Gilgamesh.Entities.MarketData;
+using Gilgamesh.Entities.MarketData.MarketDataRetriever;
 
 namespace Gilgamesh.Console
 {
@@ -15,17 +17,12 @@ namespace Gilgamesh.Console
     {
         static void Main(string[] args)
         {
+            
             using (var unitOfWork = new UnitOfWork(new ApplicationContext()))
             {
-                UnitOfWorkFactory.Instance.UnitOfWork = unitOfWork;
-                var market = UnitOfWorkFactory.Instance.UnitOfWork.Markets.Get(100);
-                var date = new DateTime(2016, 3, 22);
-                bool resut = market.IsABankHoliday(date);
-                int test = 0;
+                IMarketDataRetriever marketDataRetriever = new MarketDataRetriever();
+                var last = marketDataRetriever.GetForexAtDate("USD", "CHF",new DateTime(2016,3,22));
             }
-
-
-
         }
     }
 }

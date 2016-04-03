@@ -50,6 +50,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,10 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitofWorkFactory.cs" />
+    <Compile Include="MarketData\Fixing.cs" />
+    <Compile Include="MarketData\MarketDataRetriever\IMarketDataRetriever.cs" />
+    <Compile Include="MarketData\MarketDataRetriever\MarketDataRetrieverException.cs" />
+    <Compile Include="MarketData\MarketDataRetriever\MarketDataRetriever.cs" />
     <Compile Include="StaticData\Currency\BankHoliday.cs" />
     <Compile Include="StaticData\Currency\Calendar.cs" />
     <Compile Include="StaticData\Currency\CommonNonWorkingDay.cs" />
@@ -75,6 +80,7 @@
     <Compile Include="StaticData\Reference\ReferenceType.cs" />
     <Compile Include="UnitOfWorkFactory.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

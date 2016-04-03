@@ -5,6 +5,7 @@ using System.Linq;
 using Gilgamesh.Entities.StaticData.Currency;
 using Gilgamesh.Entities.StaticData.Reference;
 using Gilgamesh.Entities.StaticData.Market;
+using Gilgamesh.Entities.MarketData;
 
 namespace Gilgamesh.DataAccess
 {
@@ -16,6 +17,7 @@ namespace Gilgamesh.DataAccess
         public DbSet<Reference> References { get; set; }
         public DbSet<ReferenceType> ReferenceTypes { get; set; }
         public DbSet<Market> Markets { get; set; }
+        public DbSet<Fixings> Fixings { get; set; }
 
         public IQueryable<T> Find<T>() where T : class
         {
@@ -31,6 +33,7 @@ namespace Gilgamesh.DataAccess
             modelBuilder.Configurations.Add(new NonWorkingDayConfiguration());
             modelBuilder.Configurations.Add(new ReferenceConfiguration());
             modelBuilder.Configurations.Add(new ReferenceTypeConfiguration());
+            modelBuilder.Configurations.Add(new FixingConfiguration());
         }
 
         public void Rollback()
@@ -110,4 +113,15 @@ namespace Gilgamesh.DataAccess
     }
 
 
+    public class FixingConfiguration : EntityTypeConfiguration<Fixings>
+    {
+        public FixingConfiguration()
+        {
+            HasKey(f => f.FixingId);
+            Property(f => f.InstrumentId).IsRequired();
+            Property(f => f.Fixingdate).IsRequired();
+            Property(f => f.Reference).IsRequired().HasMaxLength(24);
+            Property(f => f.RowVersion).IsRowVersion();
+        }
+    }
 }

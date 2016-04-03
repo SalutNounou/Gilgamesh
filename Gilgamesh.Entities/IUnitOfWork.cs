@@ -1,4 +1,5 @@
-﻿using Gilgamesh.Entities.StaticData.Reference;
+﻿using Gilgamesh.Entities.MarketData;
+using Gilgamesh.Entities.StaticData.Reference;
 using Gilgamesh.Entities.StaticData.Currency;
 using Gilgamesh.Entities.StaticData.Market;
 
@@ -13,6 +14,10 @@ namespace Gilgamesh.Entities
         IRepository<ReferenceType> ReferenceTypes { get; }
         IRepository<Market> Markets { get; }
         #endregion StaticData
+
+        #region MarketData
+        IRepository<Fixings> Fixings { get; }
+        #endregion MarketData
 
         int Complete();
         void Rollback();
