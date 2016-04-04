@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.Business", "Gilga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.Utils", "Gilgamesh.Utils\Gilgamesh.Utils.csproj", "{16B1DB4B-784A-4E0A-90A0-66448CB66ECC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilgamesh.Business.Test", "Gilgamesh.Business.Test\Gilgamesh.Business.Test.csproj", "{DE5B237E-F496-4595-AC57-9F4DA7307AE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,14 @@ Global
 		{16B1DB4B-784A-4E0A-90A0-66448CB66ECC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{16B1DB4B-784A-4E0A-90A0-66448CB66ECC}.Release|x64.ActiveCfg = Release|Any CPU
 		{16B1DB4B-784A-4E0A-90A0-66448CB66ECC}.Release|x64.Build.0 = Release|Any CPU
+		{DE5B237E-F496-4595-AC57-9F4DA7307AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5B237E-F496-4595-AC57-9F4DA7307AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5B237E-F496-4595-AC57-9F4DA7307AE7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DE5B237E-F496-4595-AC57-9F4DA7307AE7}.Debug|x64.Build.0 = Debug|Any CPU
+		{DE5B237E-F496-4595-AC57-9F4DA7307AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5B237E-F496-4595-AC57-9F4DA7307AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE5B237E-F496-4595-AC57-9F4DA7307AE7}.Release|x64.ActiveCfg = Release|Any CPU
+		{DE5B237E-F496-4595-AC57-9F4DA7307AE7}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

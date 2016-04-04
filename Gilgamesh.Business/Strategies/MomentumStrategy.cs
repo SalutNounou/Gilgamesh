@@ -41,7 +41,7 @@ namespace Gilgamesh.Business.Strategies
 
         }
 
-        private ActionsMomentumStrategy GetInvestmentAction(DateTime date)
+        public ActionsMomentumStrategy GetInvestmentAction(DateTime date)
         {
             var fixingsSAndP500 = _marketDataRetriever.GetHistoricalFixings(SAndP500Ticker, date.AddYears(-1), date);
             var fixingsWorldMinusUs = _marketDataRetriever.GetHistoricalFixings(MsciWorldMinusUsTicker,
@@ -57,7 +57,7 @@ namespace Gilgamesh.Business.Strategies
         }
 
 
-        private ActionsMomentumStrategy DecideWhatToBuy(decimal perfSAndP, decimal perfWorld, decimal perfBills)
+        public ActionsMomentumStrategy DecideWhatToBuy(decimal perfSAndP, decimal perfWorld, decimal perfBills)
         {
             ActionsMomentumStrategy result;
             if (perfSAndP >= perfWorld)
@@ -85,7 +85,7 @@ namespace Gilgamesh.Business.Strategies
             return result;
         }
 
-        private  decimal CalculatePerformance(List<Fixings> fixings)
+        public  decimal CalculatePerformance(List<Fixings> fixings)
         {
             decimal perf = 0;
             var fixingLastYear = fixings.LastOrDefault();
