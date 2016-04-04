@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashInstrumentTests.cs" />
     <Compile Include="CurrencyTests.cs" />
     <Compile Include="MarketDataRetrieverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
