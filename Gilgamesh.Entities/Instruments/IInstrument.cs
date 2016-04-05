@@ -9,6 +9,6 @@ namespace Gilgamesh.Entities.Instruments
         Reference Reference { get; set; }
         int CurrencyId { get; set; }
         int MarketId { get; set; }
-        IMetaModel MetaModel { get; set; }
+        AbstractMetaModel MetaModel { get; set; }
     }
 }

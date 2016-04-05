@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects.DataClasses;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using Gilgamesh.Entities.StaticData.Currency;
 using Gilgamesh.Entities.StaticData.Reference;
 using Gilgamesh.Entities.StaticData.Market;
 using Gilgamesh.Entities.MarketData;
-
+using Gilgamesh.Entities.Instruments;
 namespace Gilgamesh.DataAccess
 {
     public class ApplicationContext : DbContext, IDbContext
@@ -18,6 +19,7 @@ namespace Gilgamesh.DataAccess
         public DbSet<ReferenceType> ReferenceTypes { get; set; }
         public DbSet<Market> Markets { get; set; }
         public DbSet<Fixings> Fixings { get; set; }
+        public DbSet<Instrument> Instruments { get; set; }
 
         public IQueryable<T> Find<T>() where T : class
         {
@@ -34,6 +36,7 @@ namespace Gilgamesh.DataAccess
             modelBuilder.Configurations.Add(new ReferenceConfiguration());
             modelBuilder.Configurations.Add(new ReferenceTypeConfiguration());
             modelBuilder.Configurations.Add(new FixingConfiguration());
+            modelBuilder.Configurations.Add(new MetaModelConfiguration());
         }
 
         public void Rollback()
@@ -72,7 +75,7 @@ namespace Gilgamesh.DataAccess
             Property(c => c.Name).HasMaxLength(24);
             Property(c => c.RowVersion).IsRowVersion();
             Property(c => c.ReferecenceTypeId).IsRequired();
-            Property(c => c.InstrumentId).IsRequired();
+            HasRequired(c => c.Instrument).WithRequiredDependent(i => i.Reference);
         }
     }
 
@@ -122,6 +125,28 @@ namespace Gilgamesh.DataAccess
             Property(f => f.Fixingdate).IsRequired();
             Property(f => f.Reference).IsRequired().HasMaxLength(24);
             Property(f => f.RowVersion).IsRowVersion();
+        }
+    }
+
+    public class CashInstrumentConfiguration : EntityTypeConfiguration<CashInstrument>
+    {
+        public CashInstrumentConfiguration()
+        {
+            HasKey(c => c.InstrumentId);
+            Property(f => f.CurrencyId).IsRequired();
+            Property(f => f.Name).IsRequired();
+            Property(f => f.Rowversion).IsRowVersion();
+            HasRequired(i => i.MetaModel);
+
+        }
+    }
+
+    public class MetaModelConfiguration : EntityTypeConfiguration<AbstractMetaModel>
+    {
+        public MetaModelConfiguration()
+        {
+            HasKey(m => m.Id);
+            Property(m => m.RowVersion).IsRowVersion();
         }
     }
 }

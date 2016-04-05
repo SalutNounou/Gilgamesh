@@ -21,11 +21,14 @@ namespace Gilgamesh.Console
             
             using (var unitOfWork = new UnitOfWork(new ApplicationContext()))
             {
-                IMarketDataRetriever marketDataRetriever = new MarketDataRetriever();
-                //var last = marketDataRetriever.GetForexAtDate("USD", "CHF",new DateTime(2016,3,22));
-                var momentumStrategy = new MomentumStratgy(marketDataRetriever);
-                momentumStrategy.RunStrategy();
+                //IMarketDataRetriever marketDataRetriever = new MarketDataRetriever();
+                ////var last = marketDataRetriever.GetForexAtDate("USD", "CHF",new DateTime(2016,3,22));
+                //var momentumStrategy = new MomentumStratgy(marketDataRetriever);
+                //momentumStrategy.RunStrategy();
 
+                var instrument = unitOfWork.Instruments.Get(1);
+                var price = instrument.GetTheoreticalValue(null);
+                int test = 0;
             }
         }
     }

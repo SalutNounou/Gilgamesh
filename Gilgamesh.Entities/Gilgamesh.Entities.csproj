@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Instruments\AbstractMetaModel.cs" />
     <Compile Include="Instruments\CashInstrument.cs" />
     <Compile Include="Instruments\CashStandardMetaModel.cs" />
     <Compile Include="Instruments\IInstrument.cs" />

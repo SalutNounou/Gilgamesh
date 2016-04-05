@@ -2,12 +2,16 @@
 
 namespace Gilgamesh.Entities.Instruments
 {
-    public class CashStandardMetaModel : IMetaModel
+    public class CashStandardMetaModel : AbstractMetaModel
     {
         private readonly static string _name = "Standard";
-        public string Name => _name;
 
-        public decimal GetPrice(IInstrument instrument, IMarketData marketData)
+        public override string Name
+        {
+            get { return _name; }
+        }
+
+        public override decimal GetPrice(IInstrument instrument, IMarketData marketData)
         {
             var cash = instrument as CashInstrument;
             return cash != null ? 1 : 0;

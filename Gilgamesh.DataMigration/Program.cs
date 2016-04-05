@@ -16,6 +16,7 @@ namespace Gilgamesh.DataMigration
                 CurrencyImporter.ImportCurrencies();
                 ReferenceImporter.ImportReferences();
                 MarketImporter.ImportMarkets();
+                InstrumentImporter.ImportInstruments();
             }
         }
     }

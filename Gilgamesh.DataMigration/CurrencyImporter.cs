@@ -7,43 +7,13 @@ namespace Gilgamesh.DataMigration
 {
     public static class CurrencyImporter
     {
-
-        private static readonly Dictionary<int, string> Currencies =
-            new Dictionary<int, string>
-            {
-                {1,"USD" },
-                {2,"EUR" },
-                {3,"CHF" },
-                {4,"GBP" },
-                {5,"CAD" },
-                {6,"SGD" },
-                {7,"JPY" },
-                {8,"AUD" },
-                {9,"ARS" },
-                {10,"CNY" },
-                {11,"BRL" },
-                {12,"CLP" },
-                {13,"DKK" },
-                {14,"HKD" },
-                {15,"INR" },
-                {16,"IDR" },
-                {17,"ILS" },
-                {18,"MXN" },
-                {19,"NZD"},
-                {20,"NOK" },
-                {21,"KRW" },
-                {22, "SEK" },
-                {23,"TWD" }
-            };
-
-
         public static void ImportCurrencies()
         {
 
             UnitOfWorkFactory.Instance.UnitOfWork.CommonNonWorkingDayRepository.AddRange(GetCommonNonWorkingDays());
 
 
-            for (int i = 1; i <= Currencies.Count; i++)
+            for (int i = 1; i <= CurrenciesList.Currencies.Count; i++)
             {
                 var currency = GetCurrency(i);
                 UnitOfWorkFactory.Instance.UnitOfWork.CurrencyRepository.Add(currency);
@@ -54,10 +24,10 @@ namespace Gilgamesh.DataMigration
 
         public static Currency GetCurrency(int i)
         {
-            return Currencies.ContainsKey(i) ? new Currency
+            return CurrenciesList.Currencies.ContainsKey(i) ? new Currency
             {
                 Id = i,
-                CurrencyName = Currencies[i]
+                CurrencyName = CurrenciesList.Currencies[i]
             } : null;
         }
 

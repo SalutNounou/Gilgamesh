@@ -1,15 +1,17 @@
 ﻿using System;
+using Gilgamesh.Entities.Instruments;
 
 namespace Gilgamesh.Entities.StaticData.Reference
 {
     public class Reference : IReference
     {
+       
 
         public int ReferenceId { get; set; }
         public string Name { get; set; }
         public int ReferecenceTypeId { get; set; }
         public Byte[] RowVersion { get; set; }
-        public int InstrumentId { get; set; }
+        public Instrument Instrument { get; set; }
         
         #region Equality members
 
@@ -23,7 +25,7 @@ namespace Gilgamesh.Entities.StaticData.Reference
 
         protected bool Equals(Reference other)
         {
-            return ReferenceId == other.ReferenceId && string.Equals(Name, other.Name) && ReferecenceTypeId == other.ReferecenceTypeId && Equals(RowVersion, other.RowVersion) && InstrumentId == other.InstrumentId;
+            return ReferenceId == other.ReferenceId && string.Equals(Name, other.Name) && ReferecenceTypeId == other.ReferecenceTypeId && Equals(RowVersion, other.RowVersion) && Equals(Instrument, other.Instrument);
         }
 
         public override int GetHashCode()
@@ -34,7 +36,7 @@ namespace Gilgamesh.Entities.StaticData.Reference
                 hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ ReferecenceTypeId;
                 hashCode = (hashCode * 397) ^ (RowVersion != null ? RowVersion.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ InstrumentId;
+                hashCode = (hashCode * 397) ^ (Instrument != null ? Instrument.GetHashCode() : 0);
                 return hashCode;
             }
         }

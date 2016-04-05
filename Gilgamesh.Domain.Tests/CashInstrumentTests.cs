@@ -11,7 +11,7 @@ namespace Gilgamesh.Entities.Tests
         public void ShouldPriceCorrectlyCashInstrument()
         {
             //Arrange
-            IInstrument cash = new CashInstrument {CurrencyId=1,InstrumentId = 1,MarketId=0,MetaModel=new CashStandardMetaModel(),Name ="Cash USD", Reference = new Reference {InstrumentId = 1,ReferenceId = 1, ReferecenceTypeId = 1,Name = "CashInstrument"} };
+            IInstrument cash = new CashInstrument {CurrencyId=1,InstrumentId = 1,MarketId=0,MetaModel=new CashStandardMetaModel(),Name ="Cash USD", Reference = new Reference { ReferenceId = 1, ReferecenceTypeId = 1,Name = "CashInstrument"} };
             //Act
             var price = cash.GetTheoreticalValue(NSubstitute.Substitute.For<IMarketData>());
             //Assert
