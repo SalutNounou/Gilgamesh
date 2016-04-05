@@ -66,11 +66,13 @@
     <Compile Include="Instruments\IMetaModel.cs" />
     <Compile Include="Instruments\Instrument.cs" />
     <Compile Include="Instruments\IPriceable.cs" />
+    <Compile Include="Instruments\Share.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitofWorkFactory.cs" />
     <Compile Include="MarketData\Fixing.cs" />
     <Compile Include="MarketData\IMarketData.cs" />
+    <Compile Include="MarketData\MarketData.cs" />
     <Compile Include="MarketData\MarketDataRetriever\IMarketDataRetriever.cs" />
     <Compile Include="MarketData\MarketDataRetriever\MarketDataRetrieverException.cs" />
     <Compile Include="MarketData\MarketDataRetriever\MarketDataRetriever.cs" />

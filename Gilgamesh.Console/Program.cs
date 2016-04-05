@@ -28,7 +28,7 @@ namespace Gilgamesh.Console
 
                 var instrument = unitOfWork.Instruments.Get(1);
                 var price = instrument.GetTheoreticalValue(null);
-                int test = 0;
+                
             }
         }
     }

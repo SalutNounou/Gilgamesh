@@ -37,6 +37,8 @@ namespace Gilgamesh.DataAccess
             modelBuilder.Configurations.Add(new ReferenceTypeConfiguration());
             modelBuilder.Configurations.Add(new FixingConfiguration());
             modelBuilder.Configurations.Add(new MetaModelConfiguration());
+            modelBuilder.Configurations.Add(new CashInstrumentConfiguration());
+            modelBuilder.Configurations.Add(new ShareInstrumentConfiguration());
         }
 
         public void Rollback()
@@ -140,6 +142,22 @@ namespace Gilgamesh.DataAccess
 
         }
     }
+
+
+    public class ShareInstrumentConfiguration : EntityTypeConfiguration<Share>
+    {
+        public ShareInstrumentConfiguration()
+        {
+            HasKey(c => c.InstrumentId);
+            Property(f => f.CurrencyId).IsRequired();
+            Property(f => f.Name).IsRequired();
+            Property(f => f.Rowversion).IsRowVersion();
+            Property(f => f.MarketId).IsRequired();
+            HasRequired(i => i.MetaModel);
+        }
+    }
+
+
 
     public class MetaModelConfiguration : EntityTypeConfiguration<AbstractMetaModel>
     {
