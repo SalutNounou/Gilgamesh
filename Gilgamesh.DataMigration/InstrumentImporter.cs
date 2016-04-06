@@ -12,6 +12,7 @@ namespace Gilgamesh.DataMigration
         public static void ImportInstruments()
         {
             ImportCashInstruments();
+            ImportShares();
         }
 
 
@@ -25,5 +26,15 @@ namespace Gilgamesh.DataMigration
             }
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
         }
+
+        public static void ImportShares()
+        {
+            ShareStandardMetaModel shareStandardMetaModel = new ShareStandardMetaModel();
+
+            Share share = new Share{Reference = new Reference {Name = "VOO", ReferecenceTypeId = 1} ,CurrencyId = 1,Name = "VANGUARD 500 ETF", MetaModel = shareStandardMetaModel,MarketId = 109};
+            UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Add(share);
+            UnitOfWorkFactory.Instance.UnitOfWork.Complete();
+        }
+
     }
 }

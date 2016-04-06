@@ -8,6 +8,7 @@ using Gilgamesh.DataAccess;
 using Gilgamesh.Entities;
 using Gilgamesh.Entities.StaticData;
 using System.Data.Entity;
+using System.Runtime.InteropServices;
 using Gilgamesh.Business.Strategies;
 using Gilgamesh.Entities.MarketData;
 using Gilgamesh.Entities.MarketData.MarketDataRetriever;
@@ -26,9 +27,13 @@ namespace Gilgamesh.Console
                 //var momentumStrategy = new MomentumStratgy(marketDataRetriever);
                 //momentumStrategy.RunStrategy();
 
+                MarketData marketData= new MarketData(unitOfWork, new MarketDataRetriever());
+
                 var instrument = unitOfWork.Instruments.Get(1);
                 var price = instrument.GetTheoreticalValue(null);
-                
+
+                var share = unitOfWork.Instruments.Find(i => i.Name == "VANGUARD 500 ETF").FirstOrDefault();
+                var sharePrice = share.GetTheoreticalValue(marketData);
             }
         }
     }

@@ -52,6 +52,7 @@ namespace Gilgamesh.Entities.MarketData
                 {
                     newFixing.InstrumentId = instrument.InstrumentId;
                     _unitOfWork.Fixings.Add(newFixing);
+                    fixing = newFixing;
                 }
                 else if (fixing.Last == 0)
                 {
