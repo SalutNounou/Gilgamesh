@@ -3,6 +3,7 @@ using Gilgamesh.Entities.StaticData.Reference;
 using Gilgamesh.Entities.StaticData.Currency;
 using Gilgamesh.Entities.StaticData.Market;
 using Gilgamesh.Entities.Instruments;
+using Gilgamesh.Entities.Portfolio;
 
 namespace Gilgamesh.Entities
 {
@@ -15,6 +16,7 @@ namespace Gilgamesh.Entities
         IRepository<ReferenceType> ReferenceTypes { get; }
         IRepository<Market> Markets { get; }
         IRepository<Instrument> Instruments { get; }
+        IRepository<Trade> Trades { get; }
 
             #endregion StaticData
 

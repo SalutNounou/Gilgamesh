@@ -8,6 +8,8 @@ using Gilgamesh.Entities.StaticData.Reference;
 using Gilgamesh.Entities.StaticData.Market;
 using Gilgamesh.Entities.MarketData;
 using Gilgamesh.Entities.Instruments;
+using Gilgamesh.Entities.Portfolio;
+
 namespace Gilgamesh.DataAccess
 {
     public class ApplicationContext : DbContext, IDbContext
@@ -20,6 +22,7 @@ namespace Gilgamesh.DataAccess
         public DbSet<Market> Markets { get; set; }
         public DbSet<Fixings> Fixings { get; set; }
         public DbSet<Instrument> Instruments { get; set; }
+        public DbSet<Trade> Trades { get; set; }
 
         public IQueryable<T> Find<T>() where T : class
         {
@@ -39,6 +42,7 @@ namespace Gilgamesh.DataAccess
             modelBuilder.Configurations.Add(new MetaModelConfiguration());
             modelBuilder.Configurations.Add(new CashInstrumentConfiguration());
             modelBuilder.Configurations.Add(new ShareInstrumentConfiguration());
+            modelBuilder.Configurations.Add(new TradeConfiguration());
         }
 
         public void Rollback()
@@ -165,6 +169,22 @@ namespace Gilgamesh.DataAccess
         {
             HasKey(m => m.Id);
             Property(m => m.RowVersion).IsRowVersion();
+        }
+    }
+
+
+    public class TradeConfiguration : EntityTypeConfiguration<Trade>
+    {
+        public TradeConfiguration()
+        {
+            HasKey(t => t.TradeId);
+            HasRequired(t => t.Instrument);
+            Property(t => t.RowVersion).IsRowVersion();
+            Property(t => t.Quantity).IsRequired();
+            Property(t => t.Price).IsRequired();
+            Property(t => t.TradeDate).IsRequired();
+            Property(t => t.Status).IsRequired();
+            Property(t => t.PortfolioId).IsRequired();
         }
     }
 }
