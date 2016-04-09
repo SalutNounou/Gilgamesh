@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using Gilgamesh.Business.Strategies;
 using Gilgamesh.Entities.MarketData;
 using Gilgamesh.Entities.MarketData.MarketDataRetriever;
+using Gilgamesh.Entities.Portfolio;
 
 namespace Gilgamesh.Console
 {
@@ -33,7 +34,21 @@ namespace Gilgamesh.Console
                 var price = instrument.GetTheoreticalValue(null);
 
                 var share = unitOfWork.Instruments.Find(i => i.Name == "VANGUARD 500 ETF").FirstOrDefault();
-                var sharePrice = share.GetTheoreticalValue(marketData);
+               // var sharePrice = share.GetTheoreticalValue(marketData);
+
+
+                var trade = new Trade(share)
+                {
+                    Fees = 0,
+                    Quantity = 100,
+                    Price = 100,
+                    TradeDate = new DateTime(2016, 1, 4),
+                    PortfolioId = 1,
+                    Status = Status.Live
+                };
+                var perf = trade.Quantity*(trade.Instrument.GetTheoreticalValue(marketData) - trade.Price) -trade.Fees;
+
+
             }
         }
     }

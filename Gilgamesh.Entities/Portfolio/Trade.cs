@@ -5,13 +5,13 @@ namespace Gilgamesh.Entities.Portfolio
 {
     public class Trade : ITrade
     {
-        public Trade(IInstrument instrument)
+        public Trade(Instrument instrument)
         {
             Instrument = instrument;
         }
         public int PortfolioId { get; set; }
         public int TradeId { get; set; }
-        public IInstrument Instrument { get; }
+        public virtual Instrument Instrument { get; set; }
         public decimal Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal Fees { get; set; }

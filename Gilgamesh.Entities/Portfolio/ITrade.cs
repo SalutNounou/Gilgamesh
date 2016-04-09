@@ -8,7 +8,7 @@ namespace Gilgamesh.Entities.Portfolio
     public interface ITrade
     {
         int TradeId { get; set; }
-        IInstrument Instrument { get;  }
+        Instrument Instrument { get; set; }
         decimal Quantity { get; set; }
         decimal Price { get; set; }
         decimal Fees { get; set; }
