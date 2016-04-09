@@ -82,6 +82,7 @@
     <Compile Include="CashInstrumentTests.cs" />
     <Compile Include="CurrencyTests.cs" />
     <Compile Include="MarketDataRetrieverTests.cs" />
+    <Compile Include="PositionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

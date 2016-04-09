@@ -24,7 +24,7 @@ namespace Gilgamesh.DataAccess
             Markets = new Repository<Market>(_context);
             Fixings = new Repository<Fixings>(_context);
             Instruments = new Repository<Instrument>(_context);
-            Trades = new Repository<Trade>(_context);
+            Trades = new TradeRepository(_context);
         }
 
         public IRepository<Currency> CurrencyRepository { get; }
@@ -34,7 +34,7 @@ namespace Gilgamesh.DataAccess
         public IRepository<Market> Markets { get; }
         public IRepository<Fixings> Fixings { get; }
         public IRepository<Instrument> Instruments { get; }
-        public IRepository<Trade> Trades { get; }
+        public ITradeRepository Trades { get; }
 
         public int Complete()
         {

@@ -16,7 +16,7 @@ namespace Gilgamesh.Entities
         IRepository<ReferenceType> ReferenceTypes { get; }
         IRepository<Market> Markets { get; }
         IRepository<Instrument> Instruments { get; }
-        IRepository<Trade> Trades { get; }
+        ITradeRepository Trades { get; }
 
             #endregion StaticData
 
