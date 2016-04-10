@@ -17,6 +17,7 @@ namespace Gilgamesh.DataMigration
                 ReferenceImporter.ImportReferences();
                 MarketImporter.ImportMarkets();
                 InstrumentImporter.ImportInstruments();
+                PortfolioImporter.ImportFolios();
             }
         }
     }

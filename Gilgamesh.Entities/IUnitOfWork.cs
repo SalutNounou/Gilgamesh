@@ -17,6 +17,7 @@ namespace Gilgamesh.Entities
         IRepository<Market> Markets { get; }
         IRepository<Instrument> Instruments { get; }
         ITradeRepository Trades { get; }
+        IRepository<Portfolio.Portfolio> Portfolios { get; }
 
             #endregion StaticData
 

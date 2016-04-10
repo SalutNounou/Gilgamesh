@@ -76,6 +76,7 @@
     <Compile Include="CurrencyImporter.cs" />
     <Compile Include="InstrumentImporter.cs" />
     <Compile Include="MarketImporter.cs" />
+    <Compile Include="PortfolioImporter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferenceImporter.cs" />

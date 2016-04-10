@@ -23,6 +23,7 @@ namespace Gilgamesh.DataAccess
         public DbSet<Fixings> Fixings { get; set; }
         public DbSet<Instrument> Instruments { get; set; }
         public DbSet<Trade> Trades { get; set; }
+        public DbSet<Portfolio> Portfolios { get; set; }
 
         public IQueryable<T> Find<T>() where T : class
         {
@@ -43,6 +44,7 @@ namespace Gilgamesh.DataAccess
             modelBuilder.Configurations.Add(new CashInstrumentConfiguration());
             modelBuilder.Configurations.Add(new ShareInstrumentConfiguration());
             modelBuilder.Configurations.Add(new TradeConfiguration());
+            modelBuilder.Configurations.Add(new PortfolioConfiguration());
         }
 
         public void Rollback()
@@ -185,6 +187,19 @@ namespace Gilgamesh.DataAccess
             Property(t => t.TradeDate).IsRequired();
             Property(t => t.Status).IsRequired();
             Property(t => t.PortfolioId).IsRequired();
+        }
+    }
+
+
+    public class PortfolioConfiguration : EntityTypeConfiguration<Portfolio>
+    {
+        public PortfolioConfiguration()
+        {
+            HasKey(p => p.PortfolioId);
+            HasRequired(p => p.PortfolioCurrency);
+            Property(p => p.RowVersion).IsRowVersion();
+            HasMany(p => p.ChildPortfolios).WithOptional(p => p.FatherPortfolio);
+            Property(p => p.Name).HasMaxLength(64);
         }
     }
 }

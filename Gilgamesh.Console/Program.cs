@@ -48,6 +48,7 @@ namespace Gilgamesh.Console
                 };
                 var perf = trade.Quantity*(trade.Instrument.GetTheoreticalValue(marketData) - trade.Price) -trade.Fees;
 
+                var folioRoot = unitOfWork.Portfolios.Find(p => p.FatherPortfolio == null).FirstOrDefault();
 
             }
         }

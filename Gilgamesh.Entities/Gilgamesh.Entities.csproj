@@ -76,6 +76,7 @@
     <Compile Include="MarketData\MarketDataRetriever\IMarketDataRetriever.cs" />
     <Compile Include="MarketData\MarketDataRetriever\MarketDataRetrieverException.cs" />
     <Compile Include="MarketData\MarketDataRetriever\MarketDataRetriever.cs" />
+    <Compile Include="Portfolio\Portfolio.cs" />
     <Compile Include="Portfolio\IPosition.cs" />
     <Compile Include="Portfolio\ITrade.cs" />
     <Compile Include="Portfolio\ITradeRepository.cs" />
