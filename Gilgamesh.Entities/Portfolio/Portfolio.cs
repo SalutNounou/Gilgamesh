@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Gilgamesh.Entities.StaticData.Currency;
 
 namespace Gilgamesh.Entities.Portfolio
@@ -23,7 +24,34 @@ namespace Gilgamesh.Entities.Portfolio
         public string Name { get; set; }
         public void Load()
         {
-            
+            foreach (Portfolio childPortfolio in ChildPortfolios)
+            {
+                childPortfolio.Load();
+            }
+            LoadPositionsCurrentPortfolio();
+        }
+
+        private void LoadPositionsCurrentPortfolio()
+        {
+            var instrumentsInPortfolio = UnitOfWorkFactory.Instance.UnitOfWork.Trades.GetInstrumentsInPortfolio(PortfolioId);
+            var date = MarketData.MarketData.GetCurrentMarketData().GetDate();
+            foreach (int instrumentId in instrumentsInPortfolio)
+            {
+                var trades =
+                    UnitOfWorkFactory.Instance.UnitOfWork.Trades.GetLiveTradeForFolioAndInstrumentAtDate(PortfolioId,
+                        instrumentId, date);
+
+                var enumerable = trades as List<Trade> ?? trades.ToList();
+                var position = new Position
+                {
+                    Instrument = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Get(instrumentId),
+                    PortfolioId = PortfolioId,
+                    SecuritiesNumber = enumerable.Sum(t => t.Quantity),
+                    Trades = enumerable,
+                    PositionId = 1000*PortfolioId + instrumentId
+                };
+                _positions.Add(position);
+            }
         }
 
         public int GetPositionsCount()

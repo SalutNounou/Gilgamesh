@@ -12,6 +12,26 @@ namespace Gilgamesh.Entities.MarketData
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMarketDataRetriever _marketDataRetriever;
 
+        private static MarketData _currenMarketData;
+
+        private static readonly object MarketDataLock = new object();
+
+        public static MarketData GetCurrentMarketData()
+        {
+            if (_currenMarketData == null)
+            {
+                lock (MarketDataLock)
+                {
+                    _currenMarketData = new MarketData(UnitOfWorkFactory.Instance.UnitOfWork,
+                        new MarketDataRetriever.MarketDataRetriever())
+                    {
+                        _date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)
+                    }; //TODO : TinyIOC for marketDataRetriever and UnitOfWork
+                }
+            }
+            return _currenMarketData;
+        }
+
         private DateTime _date;
 
         public MarketData(IUnitOfWork unitOfWork, IMarketDataRetriever marketDataRetriever)
@@ -19,7 +39,7 @@ namespace Gilgamesh.Entities.MarketData
             _unitOfWork = unitOfWork;
             _marketDataRetriever = marketDataRetriever;
             var today = DateTime.Now;
-            _date= new DateTime(today.Year, today.Month,today.Day);
+            _date = new DateTime(today.Year, today.Month, today.Day);
         }
         public DateTime GetDate()
         {
@@ -30,7 +50,7 @@ namespace Gilgamesh.Entities.MarketData
         {
             var instrument = _unitOfWork.Instruments.Get(instrumentId);
             if (instrument == null) return 0;
-            if (instrument.GetInstrumentType()=='C')return 1;
+            if (instrument.GetInstrumentType() == 'C') return 1;
             var fixing = FindOrUpdateFixingForSpot(instrument);
             return fixing?.Last ?? 0;
         }
