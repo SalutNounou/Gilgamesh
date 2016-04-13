@@ -50,7 +50,7 @@ namespace Gilgamesh.DataMigration
         private static bool IsABankHolidayDay(DateTime toTest)
         {
             return /*toTest.DayOfWeek == DayOfWeek.Saturday || toTest.DayOfWeek == DayOfWeek.Sunday
-                   ||*/ (toTest.Day == 1 && (toTest.Month == 1 || toTest.Month == 5))
+                   ||*/ (toTest.Day == 1 && (toTest.Month==1) )
                    || (toTest.Day == 25 && (toTest.Month == 12));
         }
     }

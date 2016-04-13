@@ -9,6 +9,12 @@ namespace Gilgamesh.Entities.StaticData.Currency
             return BankHolidayId == other.BankHolidayId && Equals(Calendar, other.Calendar) && Day.Equals(other.Day) && Equals(RowVersion, other.RowVersion);
         }
 
+
+        public BankHoliday(DateTime date)
+        {
+            Day = date;
+        }
+
         public override int GetHashCode()
         {
             unchecked
@@ -23,7 +29,7 @@ namespace Gilgamesh.Entities.StaticData.Currency
 
         public int BankHolidayId { get; set; }
         public Calendar Calendar { get; set; }
-        public DateTime Day { get; set; }
+        public virtual  DateTime Day { get; set; }
         public byte[] RowVersion { get; set; }
 
         public override bool Equals(object obj)

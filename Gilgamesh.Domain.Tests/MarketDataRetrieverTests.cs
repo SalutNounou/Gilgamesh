@@ -44,8 +44,8 @@ namespace Gilgamesh.Entities.Tests
         {
             //Arrange
             IMarketDataRetriever marketDataRetriever = new MarketDataRetriever();
-            Currency currencyFrom = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } }, new List<CommonNonWorkingDay> { new CommonNonWorkingDay { Day = new DateTime(2016, 1, 1) } }) { CurrencyName = "USD" };
-            Currency currencyTo = new Currency(new List<BankHoliday> { new BankHoliday { Day = new DateTime(2016, 5, 1) } }, new List<CommonNonWorkingDay> { new CommonNonWorkingDay { Day = new DateTime(2016, 1, 1) } }) { CurrencyName = "CHF" };
+            Currency currencyFrom = new Currency(new List<BankHoliday> { new BankHoliday(new DateTime(2016, 5, 1)) }, new List<CommonNonWorkingDay> { new CommonNonWorkingDay { Day = new DateTime(2016, 1, 1) } }) { CurrencyName = "USD" };
+            Currency currencyTo = new Currency(new List<BankHoliday> { new BankHoliday(new DateTime(2016, 5, 1)) }, new List<CommonNonWorkingDay> { new CommonNonWorkingDay { Day = new DateTime(2016, 1, 1) } }) { CurrencyName = "CHF" };
             //Act
             var last = marketDataRetriever.GetForexHistoricalFixings(currencyFrom, currencyTo, new DateTime(2016, 3, 21), new DateTime(2016, 03, 22));
             //Assert

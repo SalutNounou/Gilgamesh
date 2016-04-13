@@ -28,6 +28,7 @@ namespace Gilgamesh.Console
                 //var momentumStrategy = new MomentumStratgy(marketDataRetriever);
                 //momentumStrategy.RunStrategy();
 
+                UnitOfWorkFactory.Instance.UnitOfWork = unitOfWork;
                 MarketData marketData= new MarketData(unitOfWork, new MarketDataRetriever());
 
                 var instrument = unitOfWork.Instruments.Get(1);
@@ -50,6 +51,8 @@ namespace Gilgamesh.Console
 
                 var folioRoot = unitOfWork.Portfolios.Find(p => p.FatherPortfolio == null).FirstOrDefault();
 
+                var market = unitOfWork.Markets.Get(156);
+                var isbanKHoliday = market.IsABankHoliday(new DateTime(2016,5,16));
             }
         }
     }
