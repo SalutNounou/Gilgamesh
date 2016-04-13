@@ -8,5 +8,7 @@ namespace Gilgamesh.Entities.StaticData.Currency
         bool IsCommonNonWorkingDay(DateTime day);
         bool IsABankHoliday(DateTime day);
         DateTime AddDays(DateTime startingDate, int howManyDays);
+        DateTime GetNextWorkingDay(DateTime input);
+        DateTime GetPreviousWorkingDay(DateTime input);
     }
 }

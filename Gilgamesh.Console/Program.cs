@@ -53,6 +53,7 @@ namespace Gilgamesh.Console
 
                 var market = unitOfWork.Markets.Get(156);
                 var isbanKHoliday = market.IsABankHoliday(new DateTime(2016,5,16));
+                var nextWorkingDay = market.GetNextWorkingDay(new DateTime(2015, 12, 23));
             }
         }
     }

@@ -10,6 +10,11 @@ namespace Gilgamesh.Entities.StaticData.Currency
         }
 
 
+        public BankHoliday()
+        {
+            
+        }
+
         public BankHoliday(DateTime date)
         {
             Day = date;

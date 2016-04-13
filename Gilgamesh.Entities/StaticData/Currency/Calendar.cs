@@ -10,11 +10,8 @@ namespace Gilgamesh.Entities.StaticData.Currency
         public int Id { get; set; }
         public byte[] RowVersion { get; set; }
         protected static List<CommonNonWorkingDay> NonWorkingDays { get; private set; }
-
-
-        private List<BankHoliday> _bankHolidays;
-        public virtual List<BankHoliday> BankHolidays
-        { get { return _bankHolidays; } private set { _bankHolidays = value; } }
+        
+        public virtual List<BankHoliday> BankHolidays{get; set; }
 
 
         protected Calendar() : this(UnitOfWorkFactory.Instance.GetUnitOfWork().CommonNonWorkingDayRepository.GetAll().ToList())
@@ -62,6 +59,16 @@ namespace Gilgamesh.Entities.StaticData.Currency
         public bool IsCommonNonWorkingDay(DateTime day)
         {
             return day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday || NonWorkingDays.Any(d => d.Day == day);
+        }
+
+        public DateTime GetNextWorkingDay(DateTime input)
+        {
+            return AddDays(input, 1);
+        }
+
+        public DateTime GetPreviousWorkingDay(DateTime input)
+        {
+            return AddDays(input, -1);
         }
     }
 }
