@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web.Script.Serialization;
+using Gilgamesh.Entities.Instruments;
 using Gilgamesh.Entities.StaticData.Currency;
 // ReSharper disable InconsistentNaming
 
@@ -17,6 +19,32 @@ namespace Gilgamesh.Entities.MarketData.MarketDataRetriever
             var result = GetLast(new List<string> { ticker });
             return result.Count > 0 ? result[0].Last : 0;
         }
+
+        public decimal GetLast(IInstrument instrument)
+        {
+            return GetLast(GetTicker(instrument));
+        }
+
+
+        private string GetTicker(IInstrument instrument)
+        {
+            StringBuilder ticker = new StringBuilder();
+            ticker.Append(instrument.Reference.Name);
+            var market = UnitOfWorkFactory.Instance.UnitOfWork.Markets.Get(instrument.MarketId);
+            if (market.MarketAcronym != string.Empty)
+                ticker.AppendFormat("{0}", market.MarketAcronym);
+            return ticker.ToString();
+        }
+
+
+
+        public List<Fixings> GetLast(List<IInstrument> instruments)
+        {
+            return GetLast(instruments.Select(GetTicker).ToList());
+        }
+
+        
+
 
         public List<Fixings> GetLast(List<string> ticker)
         {
@@ -46,6 +74,11 @@ namespace Gilgamesh.Entities.MarketData.MarketDataRetriever
             {
                 throw new MarketDataRetrieverException(e);
             }
+        }
+
+        public List<Fixings> GetHistoricalFixings(IInstrument instrument, DateTime dateFrom, DateTime dateTo)
+        {
+            return GetHistoricalFixings(GetTicker(instrument),dateFrom, dateTo);
         }
 
         public List<Fixings> GetHistoricalFixings(string ticker, DateTime dateFrom, DateTime dateTo)

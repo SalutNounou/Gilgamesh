@@ -66,7 +66,7 @@ namespace Gilgamesh.Entities.MarketData
             var fixing = _unitOfWork.Fixings.Find(f => f.InstrumentId == instrument.InstrumentId && f.Last != 0).FirstOrDefault();
             if (fixing == null || fixing.Last == 0)
             {
-                var newFixing = _marketDataRetriever.GetLast(new List<string> { instrument.Reference.Name }).FirstOrDefault();
+                var newFixing = _marketDataRetriever.GetLast(new List<IInstrument>{ instrument}/*new List<string> { instrument.Reference.Name }*/).FirstOrDefault();
                 if (newFixing == null) return null;
                 if (fixing == null)
                 {

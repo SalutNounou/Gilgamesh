@@ -35,7 +35,7 @@ namespace Gilgamesh.Console
                 var price = instrument.GetTheoreticalValue(null);
 
                 var share = unitOfWork.Instruments.Find(i => i.Name == "VANGUARD 500 ETF").FirstOrDefault();
-               // var sharePrice = share.GetTheoreticalValue(marketData);
+                var sharePrice = share.GetTheoreticalValue(marketData);
 
 
                 var trade = new Trade(share)
