@@ -80,6 +80,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferenceImporter.cs" />
+    <Compile Include="TradeImporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

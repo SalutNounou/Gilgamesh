@@ -1,7 +1,8 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.ComponentModel;
+using System.Data.Entity;
 using Gilgamesh.DataAccess;
 using Gilgamesh.Entities;
+
 
 namespace Gilgamesh.DataMigration
 {
@@ -18,6 +19,7 @@ namespace Gilgamesh.DataMigration
                 MarketImporter.ImportMarkets();
                 InstrumentImporter.ImportInstruments();
                 PortfolioImporter.ImportFolios();
+                TradeImporter.ImportTrades();
             }
         }
     }

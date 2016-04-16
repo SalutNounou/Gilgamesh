@@ -42,7 +42,7 @@ namespace Gilgamesh.DataMigration
             Portfolio axa = new Portfolio() { PortfolioCurrency = eur, ChildPortfolios = new List<Portfolio>(), IsStrategy = false, Name = "AXA" };
             axa.ChildPortfolios.Add(epargneSalarialeAxa);
 
-            Portfolio compteLienhard = new Portfolio() { PortfolioCurrency = chf, ChildPortfolios = new List<Portfolio>(), IsStrategy = true, Name = "Compte Lienhard & Co" };
+            Portfolio compteLienhard = new Portfolio() { PortfolioCurrency = chf, ChildPortfolios = new List<Portfolio>(), IsStrategy = true, Name = "Compte Lienhardt & Partner" };
             Portfolio assuranceVieSwissLife = new Portfolio() { PortfolioCurrency = chf, ChildPortfolios = new List<Portfolio>(), IsStrategy = true, Name = "Assurance Vie Swiss Life" };
             Portfolio swissLifeSelect = new Portfolio() { PortfolioCurrency = chf, ChildPortfolios = new List<Portfolio>(), IsStrategy = false, Name = "Swiss Life Select" };
             swissLifeSelect.ChildPortfolios.Add(compteLienhard);
