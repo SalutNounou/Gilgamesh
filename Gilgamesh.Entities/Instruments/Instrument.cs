@@ -14,11 +14,11 @@ namespace Gilgamesh.Entities.Instruments
         public virtual AbstractMetaModel MetaModel { get; set; }
         public byte [] Rowversion { get; set; }
         public abstract char GetInstrumentType();
-
+        public bool QuotationInCents { get; set; }
 
         public decimal GetTheoreticalValue(IMarketData data)
         {
-            return MetaModel?.GetPrice(this, data) ?? 0;
+            return MetaModel?.GetPrice(this, data)*(QuotationInCents?(decimal)1/100:1) ?? 0;
         }
     }
 }

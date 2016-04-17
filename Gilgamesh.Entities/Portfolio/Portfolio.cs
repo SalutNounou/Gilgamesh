@@ -16,7 +16,7 @@ namespace Gilgamesh.Entities.Portfolio
 
 
         public int PortfolioId { get; set; } 
-        public Currency PortfolioCurrency { get; set; }
+        public virtual Currency PortfolioCurrency { get; set; }
         public bool IsStrategy { get; set; }
         public Portfolio FatherPortfolio { get; set; }
         public virtual List<Portfolio> ChildPortfolios { get; set; }
@@ -33,6 +33,7 @@ namespace Gilgamesh.Entities.Portfolio
 
         private void LoadPositionsCurrentPortfolio()
         {
+            _positions.Clear();
             var instrumentsInPortfolio = UnitOfWorkFactory.Instance.UnitOfWork.Trades.GetInstrumentsInPortfolio(PortfolioId);
             var date = MarketData.MarketData.GetCurrentMarketData().GetDate();
             foreach (int instrumentId in instrumentsInPortfolio)

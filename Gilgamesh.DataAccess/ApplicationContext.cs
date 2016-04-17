@@ -133,6 +133,12 @@ namespace Gilgamesh.DataAccess
             Property(f => f.Fixingdate).IsRequired();
             Property(f => f.Reference).IsRequired().HasMaxLength(24);
             Property(f => f.RowVersion).IsRowVersion();
+            Property(f=>f.Last).HasPrecision(12, 6);
+            Property(f => f.Theroretical).HasPrecision(12, 6);
+            Property(f => f.High).HasPrecision(12, 6);
+            Property(f => f.Low).HasPrecision(12, 6);
+            Property(f => f.Open).HasPrecision(12, 6);
+            Property(f => f.Close).HasPrecision(12, 6);
         }
     }
 
@@ -182,8 +188,9 @@ namespace Gilgamesh.DataAccess
             HasKey(t => t.TradeId);
             HasRequired(t => t.Instrument);
             Property(t => t.RowVersion).IsRowVersion();
-            Property(t => t.Quantity).IsRequired();
-            Property(t => t.Price).IsRequired();
+            Property(t => t.Quantity).IsRequired().HasPrecision(12, 6); 
+            Property(t=>t.Fees).HasPrecision(12, 6);
+            Property(t => t.Price).IsRequired().HasPrecision(12,6);
             Property(t => t.TradeDate).IsRequired();
             Property(t => t.Status).IsRequired();
             Property(t => t.PortfolioId).IsRequired();

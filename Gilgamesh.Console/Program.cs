@@ -73,6 +73,13 @@ namespace Gilgamesh.Console
                 System.Console.WriteLine("Portfolio {0} has result : {1} {2}", saxo.Name, valueFolio.DecimalValue, saxo.PortfolioCurrency.CurrencyName);
 
 
+                folioRoot.Load();
+                var assetValueColumn = new AssetValuePortfolioColumn();
+                styleFolio = new CellStyle();
+                valueFolio = new CellValue();
+                assetValueColumn.GetPortfolioCell(folioRoot.PortfolioId,styleFolio,valueFolio);
+                System.Console.WriteLine("Portfolio {0} has Asset value : {1} {2}", folioRoot.Name, valueFolio.DecimalValue, folioRoot.PortfolioCurrency.CurrencyName);
+
                 var market = unitOfWork.Markets.Get(156);
                 var isbanKHoliday = market.IsABankHoliday(new DateTime(2016,5,16));
                 var nextWorkingDay = market.GetNextWorkingDay(new DateTime(2015, 12, 23));
