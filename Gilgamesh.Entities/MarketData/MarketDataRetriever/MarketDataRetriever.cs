@@ -173,7 +173,7 @@ namespace Gilgamesh.Entities.MarketData.MarketDataRetriever
                 using (WebClient web = new WebClient())
                 {
                     jSonData =
-                        web.DownloadString(String.Format("http://api.fixer.io/{0}?symbols={1}&base={2}", date.ToString(format, CultureInfo.InvariantCulture), currencyFrom,currencyTo));
+                        web.DownloadString(String.Format("http://api.fixer.io/{0}?symbols={1}&base={2}", date.ToString(format, CultureInfo.InvariantCulture), currencyTo, currencyFrom));
                     jSonData=jSonData.Replace("base", "baseCurrency");
                 }
                 var result = new Fixings();
@@ -182,7 +182,7 @@ namespace Gilgamesh.Entities.MarketData.MarketDataRetriever
                 if (jsonCurrencyFixing == null ||jsonCurrencyFixing.rates==null) return null;
                 result.Reference = String.Format("{0}/{1}",currencyFrom,currencyTo);
                 result.Fixingdate =DateTime.ParseExact( jsonCurrencyFixing.date, format, CultureInfo.InvariantCulture);
-                result.Last = Convert.ToDecimal(JSonRateOuput[currencyFrom](jsonCurrencyFixing.rates),CultureInfo.InvariantCulture);
+                result.Last = Convert.ToDecimal(JSonRateOuput[currencyTo](jsonCurrencyFixing.rates),CultureInfo.InvariantCulture);
                 return result;
             }
             catch (Exception e)
@@ -193,27 +193,27 @@ namespace Gilgamesh.Entities.MarketData.MarketDataRetriever
         private readonly static Dictionary<string, Func<JSonRate,string>> JSonRateOuput = new Dictionary<string, Func<JSonRate, string>>
         {
             {"USD", (r=>r.USD) },
-            {"GBP", (r=>r.USD) },
-            {"CHF", (r=>r.USD) },
-            {"EUR", (r=>r.USD) },
-            {"CAD", (r=>r.USD) },
-            {"SGD", (r=>r.USD) },
-            {"JPY", (r=>r.USD) },
-            {"CNY", (r=>r.USD) },
-            {"AUD", (r=>r.USD) },
-            {"ARS", (r=>r.USD) },
-            {"BRL", (r=>r.USD) },
-            {"CLP", (r=>r.USD) },
-            {"DKK", (r=>r.USD) },
-            {"HKD", (r=>r.USD) },
-            {"INR", (r=>r.USD) },
-            {"IDR", (r=>r.USD) },
-            {"ILS", (r=>r.USD) },
-            {"NOK", (r=>r.USD) },
-            {"MXN", (r=>r.USD) },
-            {"SEK", (r=>r.USD) },
-            {"TWD", (r=>r.USD) },
-            {"KRW", (r=>r.USD) }
+            {"GBP", (r=>r.GBP) },
+            {"CHF", (r=>r.CHF) },
+            {"EUR", (r=>r.EUR) },
+            {"CAD", (r=>r.CAD) },
+            {"SGD", (r=>r.SGD) },
+            {"JPY", (r=>r.JPY) },
+            {"CNY", (r=>r.CNY) },
+            {"AUD", (r=>r.AUD) },
+            {"ARS", (r=>r.ARS) },
+            {"BRL", (r=>r.BRL) },
+            {"CLP", (r=>r.CLP) },
+            {"DKK", (r=>r.DKK) },
+            {"HKD", (r=>r.HKD) },
+            {"INR", (r=>r.INR) },
+            {"IDR", (r=>r.IDR) },
+            {"ILS", (r=>r.ILS) },
+            {"NOK", (r=>r.NOK) },
+            {"MXN", (r=>r.MXN) },
+            {"SEK", (r=>r.SEK) },
+            {"TWD", (r=>r.TWD) },
+            {"KRW", (r=>r.KRW) }
         };
     }
     

@@ -57,7 +57,18 @@ namespace Gilgamesh.Entities.MarketData
 
         public decimal GetForex(int currencyFrom, int currencyTo)
         {
-            return 0;
+            if (currencyFrom == currencyTo) return 1;
+            var currency1 = _unitOfWork.CurrencyRepository.Get(currencyFrom);
+            var currency2 = _unitOfWork.CurrencyRepository.Get(currencyTo);
+            return _marketDataRetriever.GetForexAtDate(currency1.CurrencyName, currency2.CurrencyName, _date).Last;
+        }
+
+        public decimal GetForexAtDate(int currencyFrom, int currencyTo, DateTime date)
+        {
+            if (currencyFrom == currencyTo) return 1;
+            var currency1 = _unitOfWork.CurrencyRepository.Get(currencyFrom);
+            var currency2 = _unitOfWork.CurrencyRepository.Get(currencyTo);
+            return _marketDataRetriever.GetForexAtDate(currency1.CurrencyName, currency2.CurrencyName, date).Last;
         }
 
 

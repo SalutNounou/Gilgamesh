@@ -13,6 +13,7 @@ using Gilgamesh.Business.Strategies;
 using Gilgamesh.Entities.MarketData;
 using Gilgamesh.Entities.MarketData.MarketDataRetriever;
 using Gilgamesh.Entities.Portfolio;
+using Gilgamesh.Entities.Portfolio.PortfolioColumns;
 
 namespace Gilgamesh.Console
 {
@@ -53,7 +54,23 @@ namespace Gilgamesh.Console
                 var saxo = folioRoot.ChildPortfolios[0].ChildPortfolios[0];
                 saxo.Load();
 
+                var resultValueColumn = new PnlPortfolioColumn();
+                int posCount = saxo.GetPositionsCount();
+                for (int i = 0; i < posCount; i++)
+                {
+                    var pos = saxo.GetNthPosition(i);
+                    var style = new CellStyle();
+                    var value = new CellValue();
+                    string currencySymbol = unitOfWork.CurrencyRepository.Get(pos.GetCurrencyCode()).CurrencyName;
+                    resultValueColumn.GetPositionCell(pos,style, value);
+                    System.Console.WriteLine("Position on {0} has result : {1} {2}",pos.Instrument.Name,value.DecimalValue,currencySymbol );
+                }
 
+                var styleFolio = new CellStyle();
+                var valueFolio = new CellValue();
+
+                resultValueColumn.GetPortfolioCell(saxo.PortfolioId,styleFolio, valueFolio);
+                System.Console.WriteLine("Portfolio {0} has result : {1} {2}", saxo.Name, valueFolio.DecimalValue, saxo.PortfolioCurrency.CurrencyName);
 
 
                 var market = unitOfWork.Markets.Get(156);

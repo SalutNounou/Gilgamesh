@@ -31,6 +31,16 @@ namespace Gilgamesh.Entities.Portfolio
             return realizedPnL+potentialPnl;
         }
 
+
+        public decimal GetResultInGivenCurrency(IMarketData marketData, int targetCurrencyCode)
+        {
+            decimal realizedPnL = Trades.Sum(trade => (trade.Price*trade.Quantity + trade.Fees)*-1*marketData.GetForexAtDate(Instrument.CurrencyId, targetCurrencyCode, trade.TradeDate));
+
+            var fxNow = marketData.GetForexAtDate(Instrument.CurrencyId, targetCurrencyCode, marketData.GetDate());
+            var potentialPnl = GetAssetValue(marketData)*fxNow;
+            return realizedPnL + potentialPnl;
+        }
+
         public int GetCurrencyCode()
         {
             return Instrument.CurrencyId;

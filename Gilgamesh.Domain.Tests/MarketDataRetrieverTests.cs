@@ -36,7 +36,7 @@ namespace Gilgamesh.Entities.Tests
             //Assert
             Assert.IsNotNull(last);
             Assert.AreEqual(last.Reference, "USD/CHF");
-            Assert.AreEqual(last.Last, 1.0299);
+            Assert.AreEqual(last.Last, 0.97101d);
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace Gilgamesh.Entities.Tests
             Assert.IsNotNull(last.FirstOrDefault());
             Assert.IsNotNull(last.LastOrDefault());
             Assert.AreEqual(last.LastOrDefault().Reference, "USD/CHF");
-            Assert.AreEqual(last.LastOrDefault().Last, 1.0325);
+            Assert.AreEqual(last.LastOrDefault().Last, 0.9685m);
         }
 
     }
