@@ -198,7 +198,7 @@ namespace Gilgamesh.DataMigration
             var folio = UnitOfWorkFactory.Instance.UnitOfWork.Portfolios.Find(p => p.Name == "Compte Lienhardt & Partner").FirstOrDefault();
 
             var cash = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Cash Instrument CHF").FirstOrDefault();
-            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 90.80m, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
+            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 498m, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash);
 
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
@@ -220,7 +220,7 @@ namespace Gilgamesh.DataMigration
             var folio = UnitOfWorkFactory.Instance.UnitOfWork.Portfolios.Find(p => p.Name == "Epargne Salariale Axa").FirstOrDefault();
 
             var cash = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Cash Instrument EUR").FirstOrDefault();
-            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 1300m, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
+            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 1323m, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash);
 
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
@@ -231,7 +231,7 @@ namespace Gilgamesh.DataMigration
             var folio = UnitOfWorkFactory.Instance.UnitOfWork.Portfolios.Find(p => p.Name == "Compte Paiment Raiffeisen").FirstOrDefault();
 
             var cash = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Cash Instrument CHF").FirstOrDefault();
-            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 90.80m, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
+            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 3921m, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash);
 
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
