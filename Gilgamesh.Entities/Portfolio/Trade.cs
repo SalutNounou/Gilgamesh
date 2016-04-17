@@ -9,6 +9,11 @@ namespace Gilgamesh.Entities.Portfolio
         {
             Instrument = instrument;
         }
+
+        public Trade()
+        {
+                
+        }
         public int PortfolioId { get; set; }
         public int TradeId { get; set; }
         public virtual Instrument Instrument { get; set; }

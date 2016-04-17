@@ -50,6 +50,11 @@ namespace Gilgamesh.Console
                 var perf = trade.Quantity*(trade.Instrument.GetTheoreticalValue(marketData) - trade.Price) -trade.Fees;
 
                 var folioRoot = unitOfWork.Portfolios.Find(p => p.FatherPortfolio == null).FirstOrDefault();
+                var saxo = folioRoot.ChildPortfolios[0].ChildPortfolios[0];
+                saxo.Load();
+
+
+
 
                 var market = unitOfWork.Markets.Get(156);
                 var isbanKHoliday = market.IsABankHoliday(new DateTime(2016,5,16));
