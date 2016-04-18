@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Gilgamesh.Entities.Instruments;
 using Gilgamesh.Entities.MarketData.MarketDataRetriever;
+using Gilgamesh.Entities.Portfolio.PortfolioColumns;
 
 namespace Gilgamesh.Entities.MarketData
 {
@@ -55,6 +56,16 @@ namespace Gilgamesh.Entities.MarketData
             return fixing?.Last ?? 0;
         }
 
+
+        public decimal GetPriceAtDate(int instrumentId, DateTime date)
+        {
+            var instrument = _unitOfWork.Instruments.Get(instrumentId);
+            if (instrument == null) return 0;
+            if (instrument.GetInstrumentType() == 'C') return 1;
+            var fixing = FindHistoricalPrice(instrument, _date);
+            return fixing?.Last ?? 0;
+        }
+
         public decimal GetForex(int currencyFrom, int currencyTo)
         {
             if (currencyFrom == currencyTo) return 1;
@@ -90,6 +101,28 @@ namespace Gilgamesh.Entities.MarketData
                     fixing.Last = newFixing.Last;
                 }
                 _unitOfWork.Complete();
+            }
+            return fixing;
+        }
+
+
+        private Fixings FindHistoricalPrice(Instrument instrument, DateTime date)
+        {
+            var fixing = _unitOfWork.Fixings.Find(f => f.InstrumentId == instrument.InstrumentId && f.Last != 0).FirstOrDefault();
+            if (fixing == null || fixing.Last == 0)
+            {
+                var newFixing = _marketDataRetriever.GetHistoricalFixings(instrument,date,date).FirstOrDefault();
+                if (newFixing == null) return null;
+                if (fixing == null)
+                {
+                    newFixing.InstrumentId = instrument.InstrumentId;
+                    fixing = newFixing;
+                }
+                else if (fixing.Last == 0)
+                {
+                    fixing.Last = newFixing.Last;
+                }
+               // _unitOfWork.Complete();
             }
             return fixing;
         }

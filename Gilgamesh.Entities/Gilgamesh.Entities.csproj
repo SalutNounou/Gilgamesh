@@ -84,9 +84,11 @@
     <Compile Include="Portfolio\ITrade.cs" />
     <Compile Include="Portfolio\ITradeRepository.cs" />
     <Compile Include="Portfolio\PortfolioColumns\AssetValuePortfolioColumn.cs" />
+    <Compile Include="Portfolio\PortfolioColumns\PerformanceWithoutFxPortfolioColumn.cs" />
     <Compile Include="Portfolio\PortfolioColumns\PnlPortfolioColumn.cs" />
     <Compile Include="Portfolio\PortfolioColumns\PortfolioColumn.cs" />
     <Compile Include="Portfolio\PortfolioColumns\PortfolioColumnUtils.cs" />
+    <Compile Include="Portfolio\PortfolioColumns\ReturnsCalculator.cs" />
     <Compile Include="Portfolio\Position.cs" />
     <Compile Include="Portfolio\Status.cs" />
     <Compile Include="Portfolio\Trade.cs" />

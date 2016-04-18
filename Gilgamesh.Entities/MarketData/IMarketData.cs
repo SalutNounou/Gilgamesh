@@ -8,5 +8,6 @@ namespace Gilgamesh.Entities.MarketData
         decimal GetSpot(int instrumentId);
         decimal GetForex(int currencyFrom, int currencyTo);
         decimal GetForexAtDate(int currencyFrom, int currencyTo, DateTime date);
+        decimal  GetPriceAtDate(int instrumentId, DateTime date);
     }
 }

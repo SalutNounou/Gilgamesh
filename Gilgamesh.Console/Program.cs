@@ -80,6 +80,22 @@ namespace Gilgamesh.Console
                 assetValueColumn.GetPortfolioCell(folioRoot.PortfolioId,styleFolio,valueFolio);
                 System.Console.WriteLine("Portfolio {0} has Asset value : {1} {2}", folioRoot.Name, valueFolio.DecimalValue, folioRoot.PortfolioCurrency.CurrencyName);
 
+
+                var perfColumn = new PerformanceWithoutFxPortfolioColumn();
+                saxo = folioRoot.ChildPortfolios[0].ChildPortfolios[0];
+
+                var positionStyle = new CellStyle();
+                var positionValue = new CellValue();
+                posCount = saxo.GetPositionsCount();
+                for (var i = 0; i < posCount; i++)
+                {
+                    var pos = saxo.GetNthPosition(i);
+                    perfColumn.GetPositionCell(pos, positionStyle, positionValue);
+                    var perfPos = positionValue.DecimalValue;
+                }   
+
+
+
                 var market = unitOfWork.Markets.Get(156);
                 var isbanKHoliday = market.IsABankHoliday(new DateTime(2016,5,16));
                 var nextWorkingDay = market.GetNextWorkingDay(new DateTime(2015, 12, 23));
