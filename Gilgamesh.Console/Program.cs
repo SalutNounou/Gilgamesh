@@ -81,7 +81,7 @@ namespace Gilgamesh.Console
                 System.Console.WriteLine("Portfolio {0} has Asset value : {1} {2}", folioRoot.Name, valueFolio.DecimalValue, folioRoot.PortfolioCurrency.CurrencyName);
 
 
-                var perfColumn = new PerformanceWithoutFxPortfolioColumn();
+                var perfColumn = new PerformancePortfolioColumn();
                 saxo = folioRoot.ChildPortfolios[0].ChildPortfolios[0];
 
                 var positionStyle = new CellStyle();
@@ -92,8 +92,27 @@ namespace Gilgamesh.Console
                     var pos = saxo.GetNthPosition(i);
                     perfColumn.GetPositionCell(pos, positionStyle, positionValue);
                     var perfPos = positionValue.DecimalValue;
-                }   
+                }
 
+                var forexPerfColumn = new ForexPerformancePortfolioColumn();
+                for (var i = 0; i < posCount; i++)
+                {
+                    var pos = saxo.GetNthPosition(i);
+                    forexPerfColumn.GetPositionCell(pos, positionStyle, positionValue);
+                    var perfPos = positionValue.DecimalValue;
+                }
+
+
+                styleFolio = new CellStyle();
+                valueFolio = new CellValue();
+
+                var cto = folioRoot.ChildPortfolios[3].ChildPortfolios[0];
+
+
+                perfColumn.GetPortfolioCell(saxo.PortfolioId, styleFolio, valueFolio);
+                var perfolio = valueFolio.DecimalValue;
+                perfColumn.GetPortfolioCell(cto.PortfolioId, styleFolio, valueFolio);
+                perfolio = valueFolio.DecimalValue;
 
 
                 var market = unitOfWork.Markets.Get(156);
