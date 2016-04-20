@@ -110,9 +110,22 @@ namespace Gilgamesh.Console
 
 
                 perfColumn.GetPortfolioCell(saxo.PortfolioId, styleFolio, valueFolio);
-                var perfolio = valueFolio.DecimalValue;
+                var perffolio = valueFolio.DecimalValue;
                 perfColumn.GetPortfolioCell(cto.PortfolioId, styleFolio, valueFolio);
-                perfolio = valueFolio.DecimalValue;
+                perffolio = valueFolio.DecimalValue;
+
+
+                posCount = cto.GetPositionsCount();
+                for (int i = 0; i < posCount; i++)
+                {
+                    var pos = cto.GetNthPosition(i);
+                    var style = new CellStyle();
+                    var value = new CellValue();
+                    string currencySymbol = unitOfWork.CurrencyRepository.Get(pos.GetCurrencyCode()).CurrencyName;
+                    var fx = MarketData.GetCurrentMarketData().GetForex(pos.GetCurrencyCode(),cto.PortfolioCurrency.Id);
+                    resultValueColumn.GetPositionCell(pos, style, value);
+                    System.Console.WriteLine("Position on {0} has result : {1} {2}", pos.Instrument.Name, value.DecimalValue*fx, currencySymbol);
+                }
 
 
                 var market = unitOfWork.Markets.Get(156);

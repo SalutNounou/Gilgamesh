@@ -79,25 +79,53 @@ namespace Gilgamesh.Entities.Portfolio.PortfolioColumns
         {
 
             if (intervalStartDate == intervalEndDate) return 1;
-            var initialTrades = position.Trades.Where(t => t.TradeDate == intervalStartDate);
-            var trades = initialTrades as IList<Trade> ?? initialTrades.ToList();
-            var initialQuantity = trades.Sum(t => t.Quantity);
-            if (Math.Abs(initialQuantity) < (decimal)0.000001) return 1;
-            var initialAmount = trades.Sum(t => t.Quantity * t.Price);
-            var fees = trades.Where(t => t.TradeDate == intervalStartDate).Sum(t => t.Fees);
+
+            var initialQuantity = GetInitialQuantityAtStartDate(position, intervalStartDate);
+            var quantityFromBefore = QuantityFromBeforeStartDate(position, intervalStartDate);
+            
+            if (Math.Abs(initialQuantity+quantityFromBefore) < (decimal)0.000001) return 1;
+            
+            var initialAmount = GetinitialAmountForPosition(position, intervalStartDate, intervalEndDate);
             if (Math.Abs(initialAmount) < (decimal)0.000000001) return 1;
+
+            var fees = GetFeesAtStartDate(position, intervalStartDate);
+
             var finalPrice = MarketData.MarketData.GetCurrentMarketData()
                 .GetPriceAtDate(position.Instrument.InstrumentId, intervalEndDate)*(position.Instrument.QuotationInCents?1/100:1);
-            var finalAmount = finalPrice * initialQuantity;
+
+            var finalAmount = finalPrice * (initialQuantity+quantityFromBefore);
+
             var intermediateReturns = finalAmount / (initialAmount + (withFees?fees:0));
             return intermediateReturns;
         }
 
+        private static decimal QuantityFromBeforeStartDate(Position position, DateTime intervalStartDate)
+        {
+            var tradesFromBefore = position.Trades.Where(t => t.TradeDate < intervalStartDate);
+            var tradesFromBeforeLsist = tradesFromBefore as IList<Trade> ?? tradesFromBefore.ToList();
+            var quantityFromBefore = tradesFromBeforeLsist.Sum(t => t.Quantity);
+            return quantityFromBefore;
+        }
+
+        private static decimal GetInitialQuantityAtStartDate(Position position, DateTime intervalStartDate)
+        {
+            var initialTrades = position.Trades.Where(t => t.TradeDate == intervalStartDate);
+            var initialTradesList = initialTrades as IList<Trade> ?? initialTrades.ToList();
+            var initialQuantity = initialTradesList.Sum(t => t.Quantity);
+            return initialQuantity;
+        }
+
+        public static decimal GetFeesAtStartDate(Position pos, DateTime intervalStartDate)
+        {
+            var initialTrades = pos.Trades.Where(t => t.TradeDate == intervalStartDate);
+            return initialTrades.Sum(t => t.Fees);
+        }
 
 
         public static decimal CalculateReturnsForFolio(int portfolioCode)
         {
             var portfolio = UnitOfWorkFactory.Instance.UnitOfWork.Portfolios.Get(portfolioCode);
+            if (!portfolio.IsStrategy) return 0;
             portfolio.Load();
             var startDate = GetFolioStartDate( portfolio);
             DateTime today = MarketData.MarketData.GetCurrentMarketData().GetDate();
@@ -166,10 +194,29 @@ namespace Gilgamesh.Entities.Portfolio.PortfolioColumns
             return position.Trades.Where(t => t.TradeDate==date ).Sum(t => t.Fees);
         }
 
-        private static decimal GetinitialAmountForPosition(Position pos, DateTime startDate, DateTime endDate)
+        private static decimal GetinitialAmountForPosition(Position position, DateTime periodStartDate, DateTime periodEndDate)
         {
-            var trades = pos.Trades.Where(t => t.TradeDate < endDate);
-            return trades.Sum(t => t.Quantity*t.Price);
+
+            var initialTrades = position.Trades.Where(t => t.TradeDate == periodStartDate);
+            var initialTradesList = initialTrades as IList<Trade> ?? initialTrades.ToList();
+            var initialQuantity = initialTradesList.Sum(t => t.Quantity);
+
+            var tradesFromBefore = position.Trades.Where(t => t.TradeDate < periodStartDate);
+            var tradesFromBeforeLsist = tradesFromBefore as IList<Trade> ?? tradesFromBefore.ToList();
+            var quantityFromBefore = tradesFromBeforeLsist.Sum(t => t.Quantity);
+
+            if (Math.Abs(initialQuantity + quantityFromBefore) < (decimal)0.000001) return 0;
+
+            var officialPriceStartDate = MarketData.MarketData.GetCurrentMarketData()
+                .GetPriceAtDate(position.Instrument.InstrumentId, periodStartDate) * (position.Instrument.QuotationInCents ? 1 / 100 : 1);
+
+            var amountStart = initialTradesList.Sum(t => t.Quantity * t.Price);
+            var amountFromBefore = quantityFromBefore * officialPriceStartDate;
+
+            var initialAmount = amountStart + amountFromBefore;
+
+
+            return initialAmount;
         }
 
         private static DateTime GetFolioStartDate( Portfolio portfolio)
