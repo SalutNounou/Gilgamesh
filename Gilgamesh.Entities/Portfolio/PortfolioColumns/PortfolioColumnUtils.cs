@@ -6,6 +6,7 @@
         {
             double valueToReturn = 0;
             var portfolio = UnitOfWorkFactory.Instance.UnitOfWork.Portfolios.Get(portfolioCode);
+            portfolio.Load();
             int posCount = portfolio.GetPositionsCount();
             for (int posIndex = 0; posIndex < posCount; posIndex++)
             {

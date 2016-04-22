@@ -22,6 +22,7 @@ namespace Gilgamesh.Entities.Portfolio
         public virtual List<Portfolio> ChildPortfolios { get; set; }
         public byte [] RowVersion { get; set; }
         public string Name { get; set; }
+        public bool IsLiquidFolio { get; set; }
         public void Load()
         {
             foreach (Portfolio childPortfolio in ChildPortfolios)

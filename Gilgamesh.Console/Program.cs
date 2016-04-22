@@ -74,6 +74,15 @@ namespace Gilgamesh.Console
 
 
                 folioRoot.Load();
+
+                var liquiditiesColumn = new LiquidCashPortfolioColumn();
+                styleFolio = new CellStyle();
+                valueFolio = new CellValue();
+                liquiditiesColumn.GetPortfolioCell(folioRoot.PortfolioId, styleFolio, valueFolio);
+                System.Console.WriteLine("Portfolio {0} has liquid cash {1} {2}", folioRoot.Name,valueFolio.DecimalValue, folioRoot.PortfolioCurrency.CurrencyName);
+
+
+
                 var assetValueColumn = new AssetValuePortfolioColumn();
                 styleFolio = new CellStyle();
                 valueFolio = new CellValue();
