@@ -15,9 +15,9 @@
             {
                 cellValue.DecimalValue = AggregateValueForPnl(portfolioCode);
             }
-                
-
         }
+
+        public override string Name => "PnL";
 
         public override void GetPositionCell(Position position, CellStyle cellStyle, CellValue cellValue)
         {

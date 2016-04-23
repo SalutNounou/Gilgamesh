@@ -21,7 +21,7 @@ namespace Gilgamesh.Utils.Mail
                 mail.To.Add(to);
                 mail.Subject = mailObject;
                 mail.Body =  mailBody;
-
+                mail.IsBodyHtml = true;
                 smtpServer.Port = 587;
                 smtpServer.Credentials = new System.Net.NetworkCredential(mailLogin, mailPass);
                 smtpServer.EnableSsl = true;

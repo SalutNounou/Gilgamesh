@@ -36,6 +36,8 @@ namespace Gilgamesh.Entities.Portfolio.PortfolioColumns
                 return value.DoubleValue.ToString(CultureInfo.InvariantCulture);
             return value.IntValue.ToString();
         }
+
+        public abstract string Name { get; }
     }
 
     public enum ValueType

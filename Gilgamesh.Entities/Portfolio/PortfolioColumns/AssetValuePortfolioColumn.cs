@@ -18,6 +18,8 @@ namespace Gilgamesh.Entities.Portfolio.PortfolioColumns
             cellStyle.NullBehaviour = NullBehaviour.NullOrUndefined;
             cellValue.DecimalValue = position.GetAssetValue(MarketData.MarketData.GetCurrentMarketData());
         }
+
+        public override string Name => "Asset Value";
     }
 
 
@@ -36,6 +38,8 @@ namespace Gilgamesh.Entities.Portfolio.PortfolioColumns
             cellStyle.NullBehaviour = NullBehaviour.NullOrUndefined;
             cellValue.DecimalValue = MarketData.MarketData.GetCurrentMarketData().GetSpot(position.Instrument.InstrumentId);
         }
+
+        public override string Name => "Last";
     }
 
     public class CurrencyPortfolioColumn : PortfolioColumn
@@ -53,5 +57,8 @@ namespace Gilgamesh.Entities.Portfolio.PortfolioColumns
             var currency = UnitOfWorkFactory.Instance.UnitOfWork.CurrencyRepository.Get(position.GetCurrencyCode());
             cellValue.StringValue = currency.CurrencyName;
         }
+
+
+        public override string Name => "Currency";
     }
 }

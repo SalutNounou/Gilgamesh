@@ -17,6 +17,8 @@
             cellStyle.NullBehaviour = NullBehaviour.NullOrUndefined;
             cellValue.DecimalValue = ReturnsCalculator.ComputeReturnsForPosition(position);
         }
+
+        public override string Name => "Performance";
     }
 
 
@@ -37,5 +39,7 @@
             cellStyle.NullBehaviour = NullBehaviour.NullOrUndefined;
             cellValue.DecimalValue = 0;
         }
+
+        public override string Name => "Forex Performance";
     }
 }

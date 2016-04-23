@@ -68,6 +68,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Reports\IReport.cs" />
+    <Compile Include="Reports\PortfolioReport.cs" />
+    <Compile Include="Reports\ReportOutputFormat\IReportOutputFormat.cs" />
+    <Compile Include="Reports\ReportOutputFormat\MailReportOutputFormat.cs" />
     <Compile Include="Strategies\ActionsMomentumStrategy.cs" />
     <Compile Include="Strategies\IStrategy.cs" />
     <Compile Include="Strategies\MomentumStrategy.cs" />

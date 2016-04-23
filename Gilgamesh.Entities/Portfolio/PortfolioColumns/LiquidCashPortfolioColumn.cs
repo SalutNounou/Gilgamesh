@@ -25,7 +25,8 @@ namespace Gilgamesh.Entities.Portfolio.PortfolioColumns
             {
                 cellValue.DecimalValue = 0;
             }
-            
         }
+
+        public override string Name => "Liquid Cash";
     }
 }
