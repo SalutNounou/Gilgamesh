@@ -73,7 +73,8 @@ namespace Gilgamesh.DataMigration
             new Share{Reference = new Reference {Name = "NTZ", ReferecenceTypeId = 1} ,CurrencyId = 1,Name = "Natuzzi Spa-ADR", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 109, QuotationInCents = false},
             new Share{Reference = new Reference {Name = "PHO", ReferecenceTypeId = 1} ,CurrencyId = 4,Name = "Peel Hotels PLC", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 160, QuotationInCents = true},
             new Share{Reference = new Reference {Name = "GIRO", ReferecenceTypeId = 1} ,CurrencyId = 2,Name = "Signaux Girod", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 125, QuotationInCents = false},
-            new Share{Reference = new Reference {Name = "VIN", ReferecenceTypeId = 1} ,CurrencyId = 2,Name = "Vianini Industria", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 140, QuotationInCents = false}
+            new Share{Reference = new Reference {Name = "VIN", ReferecenceTypeId = 1} ,CurrencyId = 2,Name = "Vianini Industria", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 140, QuotationInCents = false},
+            new Share{Reference = new Reference {Name = "GRVO", ReferecenceTypeId = 1} ,CurrencyId = 2,Name = "Graines Voltz SA", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 125, QuotationInCents = false}
         };
 
     }
