@@ -65,7 +65,7 @@ namespace Gilgamesh.DataMigration
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeAdl);
 
             var cash = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Cash Instrument EUR").FirstOrDefault();
-            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folioPea.PortfolioId, Price = 1, Quantity = 6.35m, Status = Status.Live, TradeDate = new DateTime(2014, 04, 14) };
+            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folioPea.PortfolioId, Price = 1, Quantity = 68.75m, Status = Status.Live, TradeDate = new DateTime(2014, 04, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash);
 
             var grainesVoltz = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Graines Voltz SA").FirstOrDefault();
@@ -106,9 +106,9 @@ namespace Gilgamesh.DataMigration
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeHiyduke);
 
 
-            var mbl = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "MBL Group PLC").FirstOrDefault();
-            var tradeMbl = new Trade(mbl) { Fees = 0, PortfolioId = folioCto.PortfolioId, Price = 0.0749m, Quantity = 9950, Status = Status.Live, TradeDate = new DateTime(2015, 08, 03) };
-            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeMbl);
+            //var mbl = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "MBL Group PLC").FirstOrDefault();
+            //var tradeMbl = new Trade(mbl) { Fees = 0, PortfolioId = folioCto.PortfolioId, Price = 0.0749m, Quantity = 9950, Status = Status.Live, TradeDate = new DateTime(2015, 08, 03) };
+            //UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeMbl);
 
             
             var cash=  UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Cash Instrument EUR").FirstOrDefault();
@@ -130,14 +130,32 @@ namespace Gilgamesh.DataMigration
             var tradeGld = new Trade(gld) { Fees = 22.74m, PortfolioId = folioSaxo.PortfolioId, Price = 118.09m, Quantity = 43, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeGld);
 
-            var rem = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "VANGUARD REIT ETF").FirstOrDefault();
-            var tradeRem = new Trade(rem) { Fees = 22.73m, PortfolioId = folioSaxo.PortfolioId, Price = 83.17m, Quantity = 61, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
-            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeRem);
+            var vnq = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "VANGUARD REIT ETF").FirstOrDefault();
+            var tradeVnq = new Trade(vnq) { Fees = 22.73m, PortfolioId = folioSaxo.PortfolioId, Price = 83.17m, Quantity = 61, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeVnq);
 
-            
+            var gigm = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Gigamedia Ltd").FirstOrDefault();
+            var tradeGigm = new Trade(gigm) { Fees = 22.73m, PortfolioId = folioSaxo.PortfolioId, Price = 2.5m, Quantity = 510, Status = Status.Live, TradeDate = new DateTime(2016, 06, 28) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeGigm);
+
+            var gravity = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Gravity Corp").FirstOrDefault();
+            var tradeGravity = new Trade(gravity) { Fees = 22.73m, PortfolioId = folioSaxo.PortfolioId, Price = 4.32m, Quantity = 340, Status = Status.Live, TradeDate = new DateTime(2016, 07, 11) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeGravity);
+
+            var rell = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Richardson Electronics Ltd").FirstOrDefault();
+            var tradeRell = new Trade(rell) { Fees = 22.73m, PortfolioId = folioSaxo.PortfolioId, Price = 5.24m, Quantity = 340, Status = Status.Live, TradeDate = new DateTime(2016, 06, 28) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeRell);
+
+            var rbcn = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Rubicon Technology").FirstOrDefault();
+            var tradeRbcn= new Trade(rbcn) { Fees = 22.73m, PortfolioId = folioSaxo.PortfolioId, Price = 0.675m, Quantity = 1900, Status = Status.Live, TradeDate = new DateTime(2016, 06, 28) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeRbcn);
+
+            var alvel = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Velcan Energy").FirstOrDefault();
+            var tradeAlvel = new Trade(alvel) { Fees = 22.73m, PortfolioId = folioSaxo.PortfolioId, Price = 10.64m, Quantity = 120, Status = Status.Live, TradeDate = new DateTime(2016, 07, 11) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeAlvel);
 
             var cash = UnitOfWorkFactory.Instance.UnitOfWork.Instruments.Find(i => i.Name == "Cash Instrument CHF").FirstOrDefault();
-            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folioSaxo.PortfolioId, Price = 1, Quantity = 90.80m, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
+            var tradeCash = new Trade(cash) { Fees = 0, PortfolioId = folioSaxo.PortfolioId, Price = 1, Quantity = 9.83m, Status = Status.Live, TradeDate = new DateTime(2016, 04, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash);
 
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
@@ -157,6 +175,9 @@ namespace Gilgamesh.DataMigration
             var tradeCash3 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = -149.23m, Status = Status.Live, TradeDate = new DateTime(2016, 06, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash3);
 
+            var tradeCash4 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = -4.99m, Status = Status.Live, TradeDate = new DateTime(2016, 07, 13) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash4);
+
 
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
         }
@@ -174,6 +195,9 @@ namespace Gilgamesh.DataMigration
 
             var tradeCash3 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = -2503.67m, Status = Status.Live, TradeDate = new DateTime(2016, 06, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash3);
+
+            var tradeCash4 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = -226.67m, Status = Status.Live, TradeDate = new DateTime(2016, 07, 13) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash4);
 
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
         }
@@ -204,7 +228,8 @@ namespace Gilgamesh.DataMigration
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash2);
             var tradeCash3 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 45m, Status = Status.Live, TradeDate = new DateTime(2016, 06, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash3);
-
+            var tradeCash4 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 45m, Status = Status.Live, TradeDate = new DateTime(2016, 07, 13) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash4);
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
         }
 
@@ -230,6 +255,8 @@ namespace Gilgamesh.DataMigration
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash2);
             var tradeCash3 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 477.06m, Status = Status.Live, TradeDate = new DateTime(2016, 06, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash3);
+            var tradeCash4 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 21.94m, Status = Status.Live, TradeDate = new DateTime(2016, 07, 13) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash4);
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
         }
 
@@ -266,6 +293,8 @@ namespace Gilgamesh.DataMigration
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash2);
             var tradeCash3 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 4343.7m, Status = Status.Live, TradeDate = new DateTime(2016, 06, 14) };
             UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash3);
+            var tradeCash4 = new Trade(cash) { Fees = 0, PortfolioId = folio.PortfolioId, Price = 1, Quantity = 300.6m, Status = Status.Live, TradeDate = new DateTime(2016, 07, 13) };
+            UnitOfWorkFactory.Instance.UnitOfWork.Trades.Add(tradeCash4);
             UnitOfWorkFactory.Instance.UnitOfWork.Complete();
         }
 

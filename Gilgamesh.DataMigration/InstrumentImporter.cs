@@ -74,7 +74,15 @@ namespace Gilgamesh.DataMigration
             new Share{Reference = new Reference {Name = "PHO", ReferecenceTypeId = 1} ,CurrencyId = 4,Name = "Peel Hotels PLC", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 160, QuotationInCents = true},
             new Share{Reference = new Reference {Name = "GIRO", ReferecenceTypeId = 1} ,CurrencyId = 2,Name = "Signaux Girod", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 125, QuotationInCents = false},
             new Share{Reference = new Reference {Name = "VIN", ReferecenceTypeId = 1} ,CurrencyId = 2,Name = "Vianini Industria", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 140, QuotationInCents = false},
-            new Share{Reference = new Reference {Name = "GRVO", ReferecenceTypeId = 1} ,CurrencyId = 2,Name = "Graines Voltz SA", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 125, QuotationInCents = false}
+            new Share{Reference = new Reference {Name = "GRVO", ReferecenceTypeId = 1} ,CurrencyId = 2,Name = "Graines Voltz SA", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 125, QuotationInCents = false},
+
+            //Shares SaxoBank
+            new Share{Reference = new Reference {Name = "GIGM", ReferecenceTypeId = 1} ,CurrencyId = 1,Name = "Gigamedia Ltd", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 109, QuotationInCents = false},
+            new Share{Reference = new Reference {Name = "GRVY", ReferecenceTypeId = 1} ,CurrencyId = 1,Name = "Gravity Corp", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 109, QuotationInCents = false},
+            new Share{Reference = new Reference {Name = "RELL", ReferecenceTypeId = 1} ,CurrencyId = 1,Name = "Richardson Electronics Ltd", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 109, QuotationInCents = false},
+            new Share{Reference = new Reference {Name = "RBCN", ReferecenceTypeId = 1} ,CurrencyId = 1,Name = "Rubicon Technology", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 109, QuotationInCents = false},
+            new Share{Reference = new Reference {Name = "ALVEL", ReferecenceTypeId = 1} ,CurrencyId = 2,Name = "Velcan Energy", MetaModel = MetaModelsList.ShareStandardMetaModel,MarketId = 125, QuotationInCents = false},
+
         };
 
     }
